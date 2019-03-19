@@ -3,10 +3,17 @@
     <h3>search your favourite movie</h3>
     <form>
       <mat-form-field>
-        <input matInput type="search" placeholder="search">
+        <input matInput type="search" name="name" placeholder="search" [(ngModel)]="search" (keyup)="getHint(search)">
       </mat-form-field>
-      <button mat-fab color="warn">
-        <mat-icon>search</mat-icon>
-      </button>
+      <a routerLink="/movies/{{search}}">
+        <button mat-fab color="warn">
+          <mat-icon>search</mat-icon>
+        </button>
+      </a>
     </form>
+  <div *ngIf="movieTitles">
+    <a *ngFor="let movieTitle of movieTitles" routerLink="/movies/{{movieTitle.show.name}}">
+      <span>{{movieTitle.show.name}}</span>
+    </a>
+  </div>
 </main>

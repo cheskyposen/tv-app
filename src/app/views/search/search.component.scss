@@ -3,7 +3,6 @@ main{
   flex-direction: column;
   height: 80%;
   width: 100%;
-  justify-content: center;
   align-items: center;
 
   h1{
@@ -21,6 +20,15 @@ main{
     mat-form-field {
       width: 80%;
       margin: 0 2rem;
+    }
+  }
+
+  div{
+    a{
+      display: block;
+      text-decoration: none;
+      padding: 0.5rem;
+      color: darkcyan;
     }
   }
 }

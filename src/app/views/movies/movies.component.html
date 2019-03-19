@@ -1,0 +1,12 @@
+<div  *ngIf="movies">
+  <!--<table mat-table [dataSource]="movies" class="mat-elevation-z8">
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.show.name}} </td>
+    </ng-container>
+  </table>-->
+  <p *ngFor="let movie of movies">{{ movie.show.name }}</p>
+  <table>
+    <tr *ngFor="let movie of movies"><td><img src="{{movie.show.image.medium}}"></td></tr>
+  </table>
+</div>
