@@ -1,4 +1,6 @@
 <mat-toolbar color="primary">
-  <span>{{ title | uppercase }}</span>
+  <button mat-button (click)="goBack()">back</button>
+  <span routerLink="/search">{{ title | uppercase }}</span>
+  <button mat-button>history</button>
 </mat-toolbar>
 

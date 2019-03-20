@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core'
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-nav',
@@ -8,8 +9,11 @@ import { Component, OnInit } from '@angular/core';
 export class NavComponent implements OnInit {
   title = 'tvmaze search';
 
-  constructor() { }
+  constructor(private location: Location) { }
 
   ngOnInit() {}
 
+  goBack(): void {
+    this.location.back();
+  }
 }

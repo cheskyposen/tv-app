@@ -10,10 +10,8 @@
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>
-      <a routerLink="/movies/{{searchBox.value}}">
-        <button mat-fab color="accent">
+        <button mat-fab color="accent" routerLink="/movies/{{searchBox.value}}">
           <mat-icon aria-label="icon-button with a search icon">search</mat-icon>
         </button>
-      </a>
     </form>
 </main>
