@@ -3,17 +3,18 @@
     <h3>search your favourite movie</h3>
     <form>
       <mat-form-field>
-        <input matInput type="search" name="name" placeholder="search" [(ngModel)]="search" (keyup)="getHint(search)">
+        <input #searchBox id="search-box" (input)="search(searchBox.value)" type="text"
+               placeholder="Search for a movie" aria-label="Show" matInput [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let option of shows$ | async" [value]="option.show.name">
+            {{option.show.name}}
+          </mat-option>
+        </mat-autocomplete>
       </mat-form-field>
-      <a routerLink="/movies/{{search}}">
-        <button mat-fab color="warn">
-          <mat-icon>search</mat-icon>
+      <a routerLink="/movies/{{searchBox.value}}">
+        <button mat-fab>
+          <mat-icon aria-label="icon-button with a search icon">search</mat-icon>
         </button>
       </a>
     </form>
-  <div *ngIf="movieTitles">
-    <a *ngFor="let movieTitle of movieTitles" routerLink="/movies/{{movieTitle.show.name}}">
-      <span>{{movieTitle.show.name}}</span>
-    </a>
-  </div>
 </main>

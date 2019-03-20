@@ -7,6 +7,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import {MatTableModule} from '@angular/material/table';
 import {CdkTableModule} from '@angular/cdk/table';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -32,7 +34,9 @@ import { EpisodesComponent } from './views/episodes/episodes.component';
     FormsModule,
     HttpClientModule,
     MatTableModule,
-    CdkTableModule
+    CdkTableModule,
+    MatAutocompleteModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
