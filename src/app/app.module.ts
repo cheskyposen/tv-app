@@ -9,6 +9,7 @@ import {MatTableModule} from '@angular/material/table';
 import {CdkTableModule} from '@angular/cdk/table';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { ReactiveFormsModule } from '@angular/forms';
+import {MatToolbarModule} from '@angular/material/toolbar';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,13 +17,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SearchComponent } from './views/search/search.component';
 import { MoviesComponent } from './views/movies/movies.component';
 import { EpisodesComponent } from './views/episodes/episodes.component';
+import { NavComponent } from './views/nav/nav.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchComponent,
     MoviesComponent,
-    EpisodesComponent
+    EpisodesComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +39,8 @@ import { EpisodesComponent } from './views/episodes/episodes.component';
     MatTableModule,
     CdkTableModule,
     MatAutocompleteModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

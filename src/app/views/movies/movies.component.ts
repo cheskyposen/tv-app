@@ -6,10 +6,14 @@ import {MoviesService} from '../../models/services/movies.service';
 @Component({
   selector: 'app-movies',
   templateUrl: './movies.component.html',
-  styleUrls: ['./movies.component.sass']
+  styleUrls: ['./movies.component.scss']
 })
 export class MoviesComponent implements OnInit {
+  title: string;
   movies: Show[];
+  columnsToDisplay = [
+    'image', 'name',  'premiered', 'summary', 'language', 'rating', 'genres', 'status'
+  ];
   constructor(
     private moviesService: MoviesService,
     private route: ActivatedRoute,
@@ -21,6 +25,7 @@ export class MoviesComponent implements OnInit {
 
   getMovies() {
     const name = this.route.snapshot.paramMap.get('name');
+    this.title = name;
     this.moviesService.getMovies(name).subscribe(movie => {this.movies = movie});
   }
 }

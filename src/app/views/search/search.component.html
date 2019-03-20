@@ -1,5 +1,4 @@
 <main>
-    <h1>{{ title | uppercase }}</h1>
     <h3>search your favourite movie</h3>
     <form>
       <mat-form-field>
@@ -12,7 +11,7 @@
         </mat-autocomplete>
       </mat-form-field>
       <a routerLink="/movies/{{searchBox.value}}">
-        <button mat-fab>
+        <button mat-fab color="accent">
           <mat-icon aria-label="icon-button with a search icon">search</mat-icon>
         </button>
       </a>

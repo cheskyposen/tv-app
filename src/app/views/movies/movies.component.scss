@@ -1,0 +1,26 @@
+img{
+  max-width: 180px;
+}
+a{
+  text-decoration: none;
+}
+H2{
+  text-align: center;
+  padding: 1rem;
+}
+h3{
+  padding: .5rem;
+}
+td{
+  margin: 0 auto;
+}
+table{
+  max-width: 80%;
+  margin: 1.5rem auto;
+  table-layout: initial;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+#summary{
+  width: 35%;
+  padding: 0 1rem;
+}

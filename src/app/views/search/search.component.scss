@@ -1,14 +1,11 @@
 main{
   display: flex;
   flex-direction: column;
-  height: 80%;
+  height: 60%;
   width: 100%;
+  justify-content: center;
   align-items: center;
 
-  h1{
-    margin: 2rem auto;
-    justify-self: flex-start;
-  }
   h3{ margin-bottom: 3rem; }
 
   form {
@@ -18,16 +15,8 @@ main{
     width: 33%;
 
     mat-form-field {
-      width: 85%;
-    }
-  }
-
-  div{
-    a{
-      display: block;
-      text-decoration: none;
-      padding: 0.5rem;
-      color: darkcyan;
+      width: 78%;
+      margin: 0 1rem;
     }
   }
 }

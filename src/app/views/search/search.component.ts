@@ -10,7 +10,6 @@ import {Show} from '../../models/Show';
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
-  title = 'tvmaze search';
   shows$: Observable<Show[]>;
   private searchTerms = new Subject<string>();
 
