@@ -3,7 +3,11 @@ export class Image {
   original: string;
 
   constructor(args?) {
-    this.medium = args.medium;
+    if (!args.medium) {
+      this.medium = 'https://via.placeholder.com/180x252';
+    } else {
+      this.medium = args.medium;
+    }
     this.original = args.original;
   }
 }

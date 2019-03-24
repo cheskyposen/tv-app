@@ -23,64 +23,11 @@
           <small *ngFor="let genre of movie.show.genres">{{genre}} </small>
           <mat-action-row>
             <a href="{{movie.show.officialSite}}" mat-raised-button color="primary" target="_blank">Visit site</a>
-            <button mat-raised-button color="accent">Details</button>
+            <button mat-raised-button color="accent" routerLink="/show/{{movie.show.id}}">Details</button>
           </mat-action-row>
         </div>
       </ng-template>
     </mat-expansion-panel>
   </mat-accordion>
 
-  <table mat-table [dataSource]="movies">
-
-    <ng-container matColumnDef="image">
-      <th mat-header-cell *matHeaderCellDef>Movie</th>
-      <td mat-cell *matCellDef="let movie">
-          <img [attr.srcset]="movie.show.image.medium" alt="">
-      </td>
-    </ng-container>    
-    
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef>Name</th>
-      <td mat-cell *matCellDef="let movie">
-        <a href="{{movie.show.officialSite}}" target="_blank">
-          <h3>{{ movie.show.name }}</h3>
-        </a>
-      </td>
-    </ng-container>
-
-    <ng-container matColumnDef="premiered">
-      <th mat-header-cell *matHeaderCellDef>Premiered</th>
-      <td mat-cell *matCellDef="let movie" [innerHTML]="movie.show.premiered"></td>
-    </ng-container>
-
-    <ng-container matColumnDef="summary">
-      <th mat-header-cell *matHeaderCellDef>Summary</th>
-      <td mat-cell *matCellDef="let movie" [innerHTML]="movie.show.summary" id="summary"></td>
-    </ng-container>
-
-    <ng-container matColumnDef="language">
-      <th mat-header-cell *matHeaderCellDef>Language</th>
-      <td mat-cell *matCellDef="let movie" [innerHTML]="movie.show.language"></td>
-    </ng-container>
-
-    <ng-container matColumnDef="rating">
-      <th mat-header-cell *matHeaderCellDef>Rating</th>
-      <td mat-cell *matCellDef="let movie" [innerHTML]="movie.show.rating.average"></td>
-    </ng-container>
-
-    <ng-container matColumnDef="status">
-      <th mat-header-cell *matHeaderCellDef>Status</th>
-      <td mat-cell *matCellDef="let movie" [innerHTML]="movie.show.status"></td>
-    </ng-container>
-
-    <ng-container matColumnDef="genres">
-      <th mat-header-cell *matHeaderCellDef>Genres</th>
-      <td mat-cell *matCellDef="let movie">
-        <span *ngFor="let genre of movie.show.genres">{{genre}}<br></span>
-      </td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
-    <tr mat-row *matRowDef="let row; columns: columnsToDisplay"></tr>
-  </table>
 </div>

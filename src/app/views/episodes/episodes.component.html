@@ -1,3 +1,5 @@
-<p>
-  episodes works!
-</p>
+<mat-list  *ngIf="episodes" >
+<mat-list-item *ngFor="let episode of episodes">
+  {{episode.name}}
+</mat-list-item>
+</mat-list>

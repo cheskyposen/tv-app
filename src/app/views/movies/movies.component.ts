@@ -26,6 +26,6 @@ export class MoviesComponent implements OnInit {
   getMovies() {
     const name = this.route.snapshot.paramMap.get('name');
     this.title = name;
-    this.moviesService.getMovies(name).subscribe(movie => {this.movies = movie});
+    this.moviesService.getMovies(name).subscribe(movie => {this.movies = movie; });
   }
 }

@@ -11,6 +11,8 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatListModule} from '@angular/material/list';
+import {FlexLayoutModule} from '@angular/flex-layout';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,6 +21,7 @@ import { SearchComponent } from './views/search/search.component';
 import { MoviesComponent } from './views/movies/movies.component';
 import { EpisodesComponent } from './views/episodes/episodes.component';
 import { NavComponent } from './views/nav/nav.component';
+import { DetailsComponent } from './views/details/details.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,8 @@ import { NavComponent } from './views/nav/nav.component';
     SearchComponent,
     MoviesComponent,
     EpisodesComponent,
-    NavComponent
+    NavComponent,
+    DetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +46,9 @@ import { NavComponent } from './views/nav/nav.component';
     MatAutocompleteModule,
     ReactiveFormsModule,
     MatToolbarModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatListModule,
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]
