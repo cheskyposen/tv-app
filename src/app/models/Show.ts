@@ -1,4 +1,4 @@
-import {Movie} from './Movie';
+import {Movie} from './show/Movie';
 
 export class Show {
   score: number;
