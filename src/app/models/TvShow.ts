@@ -1,4 +1,4 @@
-import {Show} from './shows/Show';
+import {Show} from './Show';
 
 export class TvShow {
   show: Show;

@@ -2,29 +2,29 @@
   <h2>{{ title | uppercase }}</h2>
 
   <mat-accordion>
-    <mat-expansion-panel *ngFor="let tvShow of tvShows">
+    <mat-expansion-panel *ngFor="let show of tvShows">
       <mat-expansion-panel-header>
         <mat-panel-title>
-          <h5 [innerHTML]="tvShow.show.name"></h5>
+          <h5 [innerHTML]="show.name"></h5>
         </mat-panel-title>
         <mat-panel-description>
-          <p [innerHTML]="tvShow.show.premiered"></p>
+          <p [innerHTML]="show.premiered"></p>
         </mat-panel-description>
         <mat-panel-description>
-          <p [innerHTML]="tvShow.show.status"></p>
+          <p [innerHTML]="show.status"></p>
         </mat-panel-description>
       </mat-expansion-panel-header>
       <ng-template matExpansionPanelContent>
         <div>
-          <img *ngIf="tvShow.show.image.medium" alt="{{tvShow.show.name}} cover" [src]="tvShow.show.image.medium">
-          <span [innerHTML]="tvShow.show.summary"></span>
+          <img *ngIf="show.image.medium" alt="{{show.name}} cover" [src]="show.image.medium">
+          <span [innerHTML]="show.summary"></span>
           <mat-divider></mat-divider>
-          <h5 [innerHTML]="tvShow.show.language"></h5>
-          <h4 *ngIf="tvShow.show.rating.average"><mat-icon>star_rate</mat-icon>{{tvShow.show.rating.average}}</h4>
-          <small *ngFor="let genre of tvShow.show.genres">{{genre}} </small>
+          <h5 [innerHTML]="show.language"></h5>
+          <h4 *ngIf="show.rating.average"><mat-icon>star_rate</mat-icon>{{show.rating.average}}</h4>
+          <small *ngFor="let genre of show.genres">{{genre}} </small>
           <mat-action-row>
-            <a [href]="tvShow.show.officialSite" mat-raised-button color="primary" target="_blank">Visit site</a>
-            <button mat-raised-button color="accent" [routerLink]="['/show/',tvShow.show.id]">Details</button>
+            <a [href]="show.officialSite" mat-raised-button color="primary" target="_blank">Visit site</a>
+            <button mat-raised-button color="accent" [routerLink]="['/show/',show.id]">Details</button>
           </mat-action-row>
         </div>
       </ng-template>

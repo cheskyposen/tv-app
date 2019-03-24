@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {TvShow} from '../../models/TvShow';
 import {TvmazeService} from '../../models/services/tvmaze.service';
+import {Show} from '../../models/Show';
 
 @Component({
   selector: 'app-movies',
@@ -10,7 +10,7 @@ import {TvmazeService} from '../../models/services/tvmaze.service';
 })
 export class ShowsComponent implements OnInit {
   title: string;
-  tvShows: TvShow[];
+  tvShows: Show[];
 
   constructor(
     private tvmazeService: TvmazeService,

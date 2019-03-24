@@ -1,7 +1,7 @@
-import {Schedule} from './Schedule';
-import {Rating} from './Rating';
-import {Network} from './Network';
-import {Image} from './Image';
+import {Schedule} from './shows/Schedule';
+import {Rating} from './shows/Rating';
+import {Network} from './shows/Network';
+import {Image} from './shows/Image';
 
 export class Show {
   id: number;
