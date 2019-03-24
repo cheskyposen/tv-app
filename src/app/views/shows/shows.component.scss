@@ -1,0 +1,22 @@
+div{
+  h2{
+    text-align: center;
+  }
+  mat-accordion{
+    mat-expansion-panel{
+      mat-expansion-panel-header{
+        mat-panel-title{
+          max-width: 50%;
+        }
+        mat-panel-description{
+          max-width: 25%;
+        }
+      }
+      ng-template{
+        img{
+          float: left;
+        }
+      }
+    }
+  }
+}

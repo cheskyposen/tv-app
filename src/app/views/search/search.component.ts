@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {debounceTime, distinctUntilChanged, switchMap} from 'rxjs/operators';
 import {Observable, Subject} from 'rxjs';
-import {SearchService} from '../../models/services/search.service';
-import {Show} from '../../models/Show';
+import {TvShow} from '../../models/TvShow';
+import {TvmazeService} from '../../models/services/tvmaze.service';
 
 @Component({
   selector: 'app-search',
@@ -10,10 +10,10 @@ import {Show} from '../../models/Show';
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
-  shows$: Observable<Show[]>;
+  shows$: Observable<TvShow[]>;
   private searchTerms = new Subject<string>();
 
-  constructor(private searchService: SearchService) {}
+  constructor(private tvmazeService: TvmazeService) {}
   ngOnInit() {
     this.shows$ = this.searchTerms.pipe(
       // wait 300ms after each keystroke before considering the term
@@ -21,7 +21,7 @@ export class SearchComponent implements OnInit {
       // ignore new term if same as previous term
       distinctUntilChanged(),
       // switch to new search observable each time the term changes
-      switchMap((term: string) => this.searchService.getHint(term)),
+      switchMap((term: string) => this.tvmazeService.getShows(term)),
     );
   }
   // Push a search term into the observable stream.

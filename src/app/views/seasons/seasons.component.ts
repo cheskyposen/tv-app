@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
+import {Season} from '../../models/Season';
 import {ActivatedRoute} from '@angular/router';
-import {Episode} from '../../models/Episode';
 import {TvmazeService} from '../../models/services/tvmaze.service';
 
 @Component({
-  selector: 'app-episodes',
-  templateUrl: './episodes.component.html',
-  styleUrls: ['./episodes.component.sass']
+  selector: 'app-seasons',
+  templateUrl: './seasons.component.html',
+  styleUrls: ['./seasons.component.sass']
 })
-export class EpisodesComponent implements OnInit {
-  episodes: Episode[];
+export class SeasonsComponent implements OnInit {
+  seasons: Season[];
   constructor(
     private tvmazeService: TvmazeService,
     private route: ActivatedRoute
@@ -21,6 +21,6 @@ export class EpisodesComponent implements OnInit {
 
   getEpisodes() {
     const id = this.route.snapshot.paramMap.get('id');
-    this.tvmazeService.getEpisodes(id).subscribe(episode => { this.episodes = episode; });
+    this.tvmazeService.getSeasons(id).subscribe(season => { this.seasons = season; });
   }
 }

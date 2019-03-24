@@ -3,14 +3,14 @@
     <form>
       <mat-form-field>
         <input #searchBox id="search-box" (input)="search(searchBox.value)" type="text"
-               placeholder="Search for a movie" aria-label="Show" matInput [matAutocomplete]="auto">
+               placeholder="Search for a movie" aria-label="TvShow" matInput [matAutocomplete]="auto">
         <mat-autocomplete #auto="matAutocomplete">
           <mat-option *ngFor="let option of shows$ | async" [value]="option.show.name">
             {{option.show.name}}
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>
-        <button mat-fab color="accent" routerLink="/movies/{{searchBox.value}}">
+        <button mat-fab color="accent" routerLink="/shows/{{searchBox.value}}">
           <mat-icon aria-label="icon-button with a search icon">search</mat-icon>
         </button>
     </form>

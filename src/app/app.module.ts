@@ -13,24 +13,25 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatListModule} from '@angular/material/list';
 import {FlexLayoutModule} from '@angular/flex-layout';
+import {MatDividerModule} from '@angular/material/divider';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SearchComponent } from './views/search/search.component';
-import { MoviesComponent } from './views/movies/movies.component';
+import { ShowsComponent } from './views/shows/shows.component';
 import { EpisodesComponent } from './views/episodes/episodes.component';
 import { NavComponent } from './views/nav/nav.component';
-import { DetailsComponent } from './views/details/details.component';
+import { SeasonsComponent } from './views/seasons/seasons.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchComponent,
-    MoviesComponent,
+    ShowsComponent,
     EpisodesComponent,
     NavComponent,
-    DetailsComponent
+    SeasonsComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +49,8 @@ import { DetailsComponent } from './views/details/details.component';
     MatToolbarModule,
     MatExpansionModule,
     MatListModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatDividerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
