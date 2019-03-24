@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {debounceTime, distinctUntilChanged, switchMap} from 'rxjs/operators';
 import {Observable, Subject} from 'rxjs';
-import {TvShow} from '../../models/TvShow';
 import {TvmazeService} from '../../models/services/tvmaze.service';
+import {Show} from '../../models/Show';
 
 @Component({
   selector: 'app-search',
@@ -10,7 +10,7 @@ import {TvmazeService} from '../../models/services/tvmaze.service';
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
-  shows$: Observable<TvShow[]>;
+  shows$: Observable<Show[]>;
   private searchTerms = new Subject<string>();
 
   constructor(private tvmazeService: TvmazeService) {}
