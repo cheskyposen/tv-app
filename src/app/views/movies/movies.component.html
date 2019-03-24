@@ -1,5 +1,35 @@
 <div  *ngIf="movies">
   <h2>{{ title | uppercase }}</h2>
+
+  <mat-accordion>
+    <mat-expansion-panel *ngFor="let movie of movies">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <h5 [innerHTML]="movie.show.name"></h5>
+        </mat-panel-title>
+        <mat-panel-description>
+          <p [innerHTML]="movie.show.premiered"></p>
+        </mat-panel-description>
+        <mat-panel-description>
+          <p [innerHTML]="movie.show.status"></p>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <ng-template matExpansionPanelContent>
+        <div>
+          <img *ngIf="movie.show.image.medium" alt="{{movie.show.name}} cover" [src]="movie.show.image.medium">
+          <span [innerHTML]="movie.show.summary"></span><hr>
+          <h5 [innerHTML]="movie.show.language"></h5>
+          <h4 *ngIf="movie.show.rating.average"><mat-icon>star_rate</mat-icon>{{movie.show.rating.average}}</h4>
+          <small *ngFor="let genre of movie.show.genres">{{genre}} </small>
+          <mat-action-row>
+            <a href="{{movie.show.officialSite}}" mat-raised-button color="primary" target="_blank">Visit site</a>
+            <button mat-raised-button color="accent">Details</button>
+          </mat-action-row>
+        </div>
+      </ng-template>
+    </mat-expansion-panel>
+  </mat-accordion>
+
   <table mat-table [dataSource]="movies">
 
     <ng-container matColumnDef="image">
