@@ -1,6 +1,5 @@
-<mat-list  *ngIf="season">
-<mat-list-item *ngFor="let episode of season.episodes">
+<mat-list  *ngIf="episodes">
+<mat-list-item *ngFor="let episode of episodes">
   <p [innerHTML]="episode.name"></p>
 </mat-list-item>
 </mat-list>
-<p>hello</p>

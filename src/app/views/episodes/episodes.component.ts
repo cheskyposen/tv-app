@@ -12,18 +12,14 @@ import {debounceTime} from 'rxjs/operators';
   styleUrls: ['./episodes.component.sass']
 })
 export class EpisodesComponent implements OnInit {
-  @Input() season: Season;
+  @Input() id: number;
+  episodes: Episode[];
   constructor(
     private dataService: DataService
-  ) {
-    this.dataService.tvshows.subscribe((res) => { this.season.episodes = res; });
-  }
+  ) {}
 
   ngOnInit() {
-    while (this.season.id === undefined) {
-      this.dataService.getEpisodes(this.season.id);
-      debounceTime(500);
-    }
+      this.dataService.tvmazeService.getEpisodes(this.id).subscribe((res) => { this.episodes = res; });
   }
 
   // getEpisodes() {
