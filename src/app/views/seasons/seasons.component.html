@@ -7,8 +7,11 @@
       </mat-panel-description>
       <mat-panel-description [innerHTML]="'End Date: ' + season.endDate">
       </mat-panel-description>
+      <mat-panel-description [innerHTML]="'Episodes: ' + season.episodeOrder">
+      </mat-panel-description>
     </mat-expansion-panel-header>
     <ng-template matExpansionPanelContent>
+      <img *ngIf="season.image" [src]="season.image.medium" [alt]="season.number">
       <app-episodes [id]="season.id"></app-episodes>
     </ng-template>
   </mat-expansion-panel>

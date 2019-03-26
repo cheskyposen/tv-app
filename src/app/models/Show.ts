@@ -1,6 +1,4 @@
 import {Schedule} from './shows/Schedule';
-import {Rating} from './shows/Rating';
-import {Network} from './shows/Network';
 import {Image} from './shows/Image';
 import {Season} from './Season';
 
@@ -14,8 +12,7 @@ export class Show {
   premiered: Date;
   officialSite: string;
   schedule: Schedule;
-  rating: Rating;
-  network: Network;
+  rating: object;
   image: Image;
   summary: string;
   seasons: Season[];
@@ -31,7 +28,6 @@ export class Show {
     this.officialSite = args.officialSite;
     this.schedule = args.schedule;
     this.rating = args.rating;
-    this.network = args.network;
     this.image = args.image;
     this.summary = args.summary;
     this.seasons = args.seasons;

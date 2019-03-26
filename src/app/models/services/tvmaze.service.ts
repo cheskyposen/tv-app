@@ -22,7 +22,7 @@ export class TvmazeService {
     );
   }
 
-  getSeasons(id: string): Observable<Season[]> {
+  getSeasons(id: number): Observable<Season[]> {
     return this.http.get<Season[]>(this.seasonsUrl + id + '/seasons');
   }
 

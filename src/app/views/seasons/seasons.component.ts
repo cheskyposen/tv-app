@@ -8,7 +8,7 @@ import {DataService} from '../../models/services/data.service';
 @Component({
   selector: 'app-seasons',
   templateUrl: './seasons.component.html',
-  styleUrls: ['./seasons.component.sass']
+  styleUrls: ['./seasons.component.scss']
 })
 export class SeasonsComponent implements OnInit {
   seasons: Season[];

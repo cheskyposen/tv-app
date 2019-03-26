@@ -5,9 +5,8 @@ import {ShowsComponent} from './views/shows/shows.component';
 import {SeasonsComponent} from './views/seasons/seasons.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'search', pathMatch: 'full'},
-  { path: 'search', component: SearchComponent },
-  { path: 'shows/:name', component: ShowsComponent },
+  { path: '', component: SearchComponent },
+  { path: 'search/:name', component: ShowsComponent },
   { path: 'show/:id', component: SeasonsComponent }
 ];
 

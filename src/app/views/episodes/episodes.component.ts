@@ -1,19 +1,25 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
 import {Episode} from '../../models/Episode';
-import {TvmazeService} from '../../models/services/tvmaze.service';
-import {Season} from '../../models/Season';
 import {DataService} from '../../models/services/data.service';
-import {debounceTime} from 'rxjs/operators';
+import {animate, state, style, transition, trigger} from '@angular/animations';
 
 @Component({
   selector: 'app-episodes',
   templateUrl: './episodes.component.html',
-  styleUrls: ['./episodes.component.sass']
+  styleUrls: ['./episodes.component.scss'],
+  animations: [
+    trigger('detailExpand', [
+      state('collapsed', style({height: '0px', minHeight: '0', display: 'none'})),
+      state('expanded', style({height: '*'})),
+      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+    ]),
+  ],
 })
 export class EpisodesComponent implements OnInit {
   @Input() id: number;
   episodes: Episode[];
+  columnsToDisplay = [ 'image', 'name', 'airdate' ];
+  expandedElement: Episode | null;
   constructor(
     private dataService: DataService
   ) {}
