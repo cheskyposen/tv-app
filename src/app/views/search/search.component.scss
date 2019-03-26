@@ -1,22 +1,28 @@
-main{
+h2{
+  margin: 3rem;
+  text-align: center;
+}
+div{
   display: flex;
-  flex-direction: column;
-  height: 60%;
+  flex-direction: row;
+  height: 100%;
   width: 100%;
   justify-content: center;
   align-items: center;
 
-  h3{ margin-bottom: 3rem; }
-
   form {
+    margin: 5rem;
     border: darkcyan 2px solid;
     border-radius: 50px;
     padding: 0.5rem 1rem;
-    width: 33%;
+    width: 50%;
 
     mat-form-field {
-      width: 78%;
+      width: 70%;
       margin: 0 1rem;
+    }
+    button{
+      float: right;
     }
   }
 }

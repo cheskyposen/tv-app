@@ -1,7 +1,6 @@
-<div  *ngIf="tvShows">
-  <h2>{{ title | uppercase }}</h2>
+<h2>{{ title | uppercase }}</h2>
 
-  <mat-accordion>
+  <mat-accordion *ngIf="tvShows">
     <mat-expansion-panel *ngFor="let show of tvShows">
       <mat-expansion-panel-header>
         <mat-panel-title>
@@ -11,24 +10,20 @@
           <p [innerHTML]="show.premiered"></p>
         </mat-panel-description>
         <mat-panel-description>
-          <p [innerHTML]="show.status"></p>
+          <p [innerHTML]="'Status: ' + show.status"></p>
         </mat-panel-description>
       </mat-expansion-panel-header>
       <ng-template matExpansionPanelContent>
-        <div>
-          <img *ngIf="show.image.medium" alt="{{show.name}} cover" [src]="show.image.medium">
+          <img *ngIf="show.image" alt="{{show.name}} cover" [src]="show.image.medium">
           <span [innerHTML]="show.summary"></span>
-          <mat-divider></mat-divider>
-          <h5 [innerHTML]="show.language"></h5>
+          <hr>
+          <h5 [innerHTML]="'<em>Language:</em> ' + show.language"></h5>
           <h4 *ngIf="show.rating.average"><mat-icon>star_rate</mat-icon>{{show.rating.average}}</h4>
-          <small *ngFor="let genre of show.genres">{{genre}} </small>
+          <small *ngFor="let genre of show.genres">{{genre}}, </small>
           <mat-action-row>
             <a [href]="show.officialSite" mat-raised-button color="primary" target="_blank">Visit site</a>
-            <button mat-raised-button color="accent" [routerLink]="['/show/',show.id]">Details</button>
+            <button mat-raised-button color="accent" [routerLink]="'/show/' + show.id">Details</button>
           </mat-action-row>
-        </div>
       </ng-template>
     </mat-expansion-panel>
   </mat-accordion>
-
-</div>

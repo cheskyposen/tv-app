@@ -1,5 +1,13 @@
-<mat-list  *ngIf="seasons" >
-  <mat-list-item *ngFor="let season of seasons">
-    {{season.url}}
-  </mat-list-item>
-</mat-list>
+<mat-accordion *ngIf="seasons">
+  <mat-expansion-panel *ngFor="let season of seasons">
+    <mat-expansion-panel-header>
+      <mat-panel-title [innerHTML]="'Season: ' + season.number">
+      </mat-panel-title>
+      <mat-panel-description [innerHTML]="'Premiere Date: ' + season.premiereDate">
+      </mat-panel-description>
+      <mat-panel-description [innerHTML]="'End Date: ' + season.endDate">
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+      <app-episodes [season]="season"></app-episodes>
+  </mat-expansion-panel>
+</mat-accordion>

@@ -26,7 +26,7 @@ export class TvmazeService {
     return this.http.get<Season[]>(this.seasonsUrl + id + '/seasons');
   }
 
-  getEpisodes(id: string): Observable<Episode[]> {
+  getEpisodes(id: number): Observable<Episode[]> {
     return this.http.get<Episode[]>(this.episodesUrl + id + '/episodes');
   }
 }

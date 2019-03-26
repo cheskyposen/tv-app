@@ -2,6 +2,7 @@ import {Schedule} from './shows/Schedule';
 import {Rating} from './shows/Rating';
 import {Network} from './shows/Network';
 import {Image} from './shows/Image';
+import {Season} from './Season';
 
 export class Show {
   id: number;
@@ -17,6 +18,7 @@ export class Show {
   network: Network;
   image: Image;
   summary: string;
+  seasons: Season[];
 
   constructor(args?) {
     this.id = args.id;
@@ -32,5 +34,6 @@ export class Show {
     this.network = args.network;
     this.image = args.image;
     this.summary = args.summary;
+    this.seasons = args.seasons;
   }
 }
