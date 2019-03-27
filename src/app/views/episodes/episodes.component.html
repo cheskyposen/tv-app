@@ -1,6 +1,6 @@
 <table *ngIf="season" mat-table [dataSource]="season.episodes" multiTemplateDataRows>
 
-  <ng-container matColumnDef="image">
+  <ng-container matColumnDef="title">
     <th mat-header-cell *matHeaderCellDef>EPISODE</th>
     <td mat-cell *matCellDef="let episode" class="container">
       <img *ngIf="episode.image" [src]="episode.image.medium" [alt]="episode.name">
@@ -8,14 +8,14 @@
     </td>
   </ng-container>
 
-  <ng-container matColumnDef="name">
+  <ng-container matColumnDef="summary">
     <th mat-header-cell *matHeaderCellDef>SUMMARY</th>
     <td mat-cell *matCellDef="let episode" class="summary">
       <span [innerHTML]="episode.summary"></span>
     </td>
   </ng-container>
 
-  <ng-container matColumnDef="airdate">
+  <ng-container matColumnDef="aired">
     <th mat-header-cell *matHeaderCellDef>AIRED</th>
     <td mat-cell *matCellDef="let episode">
       <h4>{{episode.airdate}}</h4>

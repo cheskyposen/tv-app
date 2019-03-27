@@ -32,6 +32,8 @@ export class ShowsComponent implements OnInit {
         return {color : 'green'};
       case('Ended'):
         return {color : 'red'};
+      case('In Development'):
+        return {color : 'blue'};
     }
   }
 }

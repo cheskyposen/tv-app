@@ -7,17 +7,10 @@ import {Season} from '../../models/Season';
   selector: 'app-episodes',
   templateUrl: './episodes.component.html',
   styleUrls: ['./episodes.component.scss'],
-  animations: [
-    trigger('detailExpand', [
-      state('collapsed', style({height: '0px', minHeight: '0', display: 'none'})),
-      state('expanded', style({height: '*'})),
-      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
-    ]),
-  ],
 })
 export class EpisodesComponent implements OnInit {
   @Input() season: Season;
-  columnsToDisplay: string[] = [ 'image', 'name', 'airdate' ];
+  columnsToDisplay: string[] = [ 'title', 'summary', 'aired' ];
 
   constructor(
     private tvmazeService: TvmazeService

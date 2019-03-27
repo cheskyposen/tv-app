@@ -24,6 +24,7 @@ import { ShowsComponent } from './views/shows/shows.component';
 import { EpisodesComponent } from './views/episodes/episodes.component';
 import { NavComponent } from './views/nav/nav.component';
 import { SeasonsComponent } from './views/seasons/seasons.component';
+import { CountdownDirective } from './controllers/countdown.directive';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { SeasonsComponent } from './views/seasons/seasons.component';
     ShowsComponent,
     EpisodesComponent,
     NavComponent,
-    SeasonsComponent
+    SeasonsComponent,
+    CountdownDirective
   ],
   imports: [
     BrowserModule,
