@@ -11,8 +11,8 @@ import {Show} from '../Show';
 })
 export class TvmazeService {
   showsUrl = 'http://api.tvmaze.com/search/shows?q=';
-  seasonsUrl = 'http://api.tvmaze.com/shows/';
-  episodesUrl = 'http://api.tvmaze.com/seasons/';
+  showUrl = 'http://api.tvmaze.com/shows/';
+  seasonUrl = 'http://api.tvmaze.com/seasons/';
 
   constructor(private http: HttpClient) { }
 
@@ -21,12 +21,13 @@ export class TvmazeService {
       map(result => (result as any[]).map(item => new Show(item.show)))
     );
   }
-
-  getSeasons(id: number): Observable<Season[]> {
-    return this.http.get<Season[]>(this.seasonsUrl + id + '/seasons');
+  getShow(id: number): Observable<Show> {
+    return this.http.get<Show>(this.showUrl + id);
   }
-
+  getSeasons(id: number): Observable<Season[]> {
+    return this.http.get<Season[]>(this.showUrl + id + '/seasons');
+  }
   getEpisodes(id: number): Observable<Episode[]> {
-    return this.http.get<Episode[]>(this.episodesUrl + id + '/episodes');
+    return this.http.get<Episode[]>(this.seasonUrl + id + '/episodes');
   }
 }

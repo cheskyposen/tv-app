@@ -10,7 +10,7 @@
           <p [innerHTML]="show.premiered"></p>
         </mat-panel-description>
         <mat-panel-description>
-          <p [innerHTML]="'Status: ' + show.status"></p>
+          <p [innerHTML]="'Status: ' + show.status" [ngStyle]="dynamicStyles(show.status)"></p>
         </mat-panel-description>
       </mat-expansion-panel-header>
       <ng-template matExpansionPanelContent>

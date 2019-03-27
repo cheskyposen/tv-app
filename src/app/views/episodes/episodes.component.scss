@@ -5,3 +5,20 @@ table {
 td{
   margin: 0 auto;
 }
+.summary{
+  padding: 0 1rem;
+}
+.container {
+  position: relative;
+  text-align: center;
+}
+.blackCenter{
+  color: black;
+}
+.whiteCenter{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -70%);
+  color: white;
+}

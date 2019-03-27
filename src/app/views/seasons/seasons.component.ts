@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Season} from '../../models/Season';
 import {ActivatedRoute} from '@angular/router';
 import {TvmazeService} from '../../models/services/tvmaze.service';
-import {Episode} from '../../models/Episode';
-import {DataService} from '../../models/services/data.service';
+import {Show} from '../../models/Show';
 
 @Component({
   selector: 'app-seasons',
@@ -11,22 +9,23 @@ import {DataService} from '../../models/services/data.service';
   styleUrls: ['./seasons.component.scss']
 })
 export class SeasonsComponent implements OnInit {
-  seasons: Season[];
-  id: string;
+  show: Show;
+  id: number;
   constructor(
-    private dataService: DataService,
+    private tvmazeService: TvmazeService,
     private route: ActivatedRoute
   ) {
-    this.id = this.route.snapshot.paramMap.get('id');
-    this.dataService.tvshows.subscribe((res) => { this.seasons = res; });
+    this.id = +this.route.snapshot.paramMap.get('id');
   }
 
   ngOnInit() {
-    this.dataService.getSeasons(this.id);
+    this.getShow();
+    this.getSeasons();
   }
-
-  // getSeasons() {
-  //   const id = this.route.snapshot.paramMap.get('id');
-  //   this.tvmazeService.getSeasons(id).subscribe(season => { this.seasons = season; });
-  // }
+  getShow() {
+    this.tvmazeService.getShow(this.id).subscribe(result => { this.show = result; });
+  }
+  getSeasons() {
+    this.tvmazeService.getSeasons(this.id).subscribe(results => { this.show.seasons = results; });
+  }
 }

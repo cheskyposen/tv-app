@@ -1,7 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
-import {Episode} from '../../models/Episode';
-import {DataService} from '../../models/services/data.service';
+import {Component, OnInit, Input} from '@angular/core';
 import {animate, state, style, transition, trigger} from '@angular/animations';
+import {TvmazeService} from '../../models/services/tvmaze.service';
+import {Season} from '../../models/Season';
 
 @Component({
   selector: 'app-episodes',
@@ -16,21 +16,18 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
   ],
 })
 export class EpisodesComponent implements OnInit {
-  @Input() id: number;
-  episodes: Episode[];
-  columnsToDisplay = [ 'image', 'name', 'airdate' ];
-  expandedElement: Episode | null;
+  @Input() season: Season;
+  columnsToDisplay: string[] = [ 'image', 'name', 'airdate' ];
+
   constructor(
-    private dataService: DataService
+    private tvmazeService: TvmazeService
   ) {}
 
   ngOnInit() {
-      this.dataService.tvmazeService.getEpisodes(this.id).subscribe((res) => { this.episodes = res; });
+    this.getEpisodes();
   }
 
-  // getEpisodes() {
-  //   // const id = +this.route.snapshot.paramMap.get('id');
-  //   const id = this.seasons[0].id;
-  //   this.tvmazeService.getEpisodes(id).subscribe(episode => { this.episodes = episode; });
-  // }
+  getEpisodes() {
+    this.tvmazeService.getEpisodes(this.season.id).subscribe(results => { this.season.episodes = results; });
+  }
 }

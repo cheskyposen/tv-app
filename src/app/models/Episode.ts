@@ -1,4 +1,3 @@
-import {Image} from './shows/Image';
 import {Time} from '@angular/common';
 
 export class Episode {
@@ -9,6 +8,6 @@ export class Episode {
   airtime: Time;
   airstamp: Date;
   runtime: number;
-  image: Image;
+  image: { medium: string };
   summary: string;
 }

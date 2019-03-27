@@ -1,4 +1,3 @@
-import {Image} from './shows/Image';
 import {Episode} from './Episode';
 
 export class Season {
@@ -7,7 +6,7 @@ export class Season {
   episodeOrder: number;
   premiereDate: Date;
   endDate: Date;
-  image: Image;
+  image: { medium: string };
   episodes: Episode[];
 
   constructor(args?) {
@@ -17,5 +16,6 @@ export class Season {
     this.premiereDate = args.premiereDate;
     this.endDate = args.endDate;
     this.image = args.image;
+    this.episodes = args.episodes;
   }
 }

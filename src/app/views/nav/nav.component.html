@@ -1,6 +1,6 @@
 <mat-toolbar color="primary">
-  <button mat-button (click)="goBack()">back</button>
+  <button mat-button (click)="goBack()"><mat-icon>arrow_back</mat-icon></button>
   <span routerLink="/">{{ title | uppercase }}</span>
-  <button mat-button>history</button>
+  <button mat-button>{{now | date:'h:mm:ss a'}}</button>
 </mat-toolbar>
 

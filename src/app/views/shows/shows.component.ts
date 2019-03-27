@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {TvmazeService} from '../../models/services/tvmaze.service';
 import {Show} from '../../models/Show';
-import {DataService} from '../../models/services/data.service';
-import {Subject} from 'rxjs';
+import {TvmazeService} from '../../models/services/tvmaze.service';
 
 @Component({
   selector: 'app-movies',
@@ -13,23 +11,27 @@ import {Subject} from 'rxjs';
 export class ShowsComponent implements OnInit {
   title: string;
   tvShows: Show[];
-  private name: string;
 
   constructor(
-    private dataService: DataService,
-    private route: ActivatedRoute,
+    private tvmazeService: TvmazeService,
+    private route: ActivatedRoute
     ) {
-    this.name = this.route.snapshot.paramMap.get('name');
-    this.dataService.tvshows.subscribe((res) => { this.tvShows = res; });
+    this.title = this.route.snapshot.paramMap.get('name');
   }
 
   ngOnInit() {
-    this.dataService.getShows(this.name);
+    this.getShows();
   }
 
-  // getMovies() {
-  //   const name = this.route.snapshot.paramMap.get('name');
-  //   this.title = name;
-  //   this.tvmazeService.getShows(name).subscribe(shows => { this.tvShows = shows; });
-  // }
+  getShows() {
+    this.tvmazeService.getShows(this.title).subscribe(results => { this.tvShows = results; });
+  }
+  dynamicStyles(status) {
+    switch (status) {
+      case('Running'):
+        return {color : 'green'};
+      case('Ended'):
+        return {color : 'red'};
+    }
+  }
 }
