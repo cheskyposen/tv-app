@@ -11,7 +11,7 @@
   <ng-container matColumnDef="summary">
     <th mat-header-cell *matHeaderCellDef>SUMMARY</th>
     <td mat-cell *matCellDef="let episode" class="summary">
-      <span [innerHTML]="episode.summary"></span>
+      <span [ngStyle]="showSpoilers(episode.airdate)? {'color':'white'}:''" [innerHTML]="episode.summary"></span>
     </td>
   </ng-container>
 

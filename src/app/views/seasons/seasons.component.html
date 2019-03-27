@@ -3,6 +3,7 @@
     <div *ngIf="show.image" mat-card-avatar [ngStyle]="{'background-size': 'cover', 'background-image': 'url('+show.image.medium+')'}"></div>
     <mat-card-title [innerText]="show.name"></mat-card-title>
     <mat-card-subtitle [innerHTML]="show.summary"></mat-card-subtitle>
+    <mat-slide-toggle [(ngModel)]="checked">Show spoilers!</mat-slide-toggle>
   </mat-card-header>
   <mat-card-content>
     <mat-accordion *ngIf="show.seasons">
@@ -16,7 +17,7 @@
           </mat-panel-description>
         </mat-expansion-panel-header>
         <ng-template matExpansionPanelContent>
-          <app-episodes *ngIf="season.premiereDate" [season]="season"></app-episodes>
+          <app-episodes *ngIf="season.premiereDate" [season]="season" [checked]="checked"></app-episodes>
         </ng-template>
       </mat-expansion-panel>
     </mat-accordion>

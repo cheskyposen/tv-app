@@ -5,9 +5,10 @@ import {ShowsComponent} from './views/shows/shows.component';
 import {SeasonsComponent} from './views/seasons/seasons.component';
 
 const routes: Routes = [
-  { path: '', component: SearchComponent },
+  { path: '', pathMatch: 'full', component: SearchComponent },
   { path: 'search/:name', component: ShowsComponent },
-  { path: 'show/:id', component: SeasonsComponent }
+  { path: 'show/:id', component: SeasonsComponent },
+  { path: '**', component: SearchComponent }
 ];
 
 @NgModule({

@@ -1,7 +1,7 @@
 import {Component, OnInit, Input} from '@angular/core';
-import {animate, state, style, transition, trigger} from '@angular/animations';
 import {TvmazeService} from '../../models/services/tvmaze.service';
 import {Season} from '../../models/Season';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-episodes',
@@ -10,6 +10,7 @@ import {Season} from '../../models/Season';
 })
 export class EpisodesComponent implements OnInit {
   @Input() season: Season;
+  @Input() checked: boolean;
   columnsToDisplay: string[] = [ 'title', 'summary', 'aired' ];
 
   constructor(
@@ -22,5 +23,9 @@ export class EpisodesComponent implements OnInit {
 
   getEpisodes() {
     this.tvmazeService.getEpisodes(this.season.id).subscribe(results => { this.season.episodes = results; });
+  }
+
+  showSpoilers(date: any) {
+    return !this.checked && moment().isBefore(date);
   }
 }

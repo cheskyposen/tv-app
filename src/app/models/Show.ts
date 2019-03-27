@@ -1,4 +1,5 @@
 import {Season} from './Season';
+import * as moment from 'moment';
 
 export class Show {
   id: number;
@@ -7,7 +8,7 @@ export class Show {
   genres: Array<string>;
   status: string;
   runtime: number;
-  premiered: Date;
+  premiered: any;
   officialSite: string;
   rating: { average: number };
   image: { medium: string };
@@ -21,7 +22,7 @@ export class Show {
     this.genres = args.genres;
     this.status = args.status;
     this.runtime = args.runtime;
-    this.premiered = args.premiered;
+    this.premiered = moment(args.premiered);
     this.officialSite = args.officialSite;
     this.rating = args.rating;
     this.image = args.image;

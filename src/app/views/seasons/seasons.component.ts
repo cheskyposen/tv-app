@@ -11,6 +11,7 @@ import {Show} from '../../models/Show';
 export class SeasonsComponent implements OnInit {
   show: Show;
   id: number;
+  checked: boolean;
   constructor(
     private tvmazeService: TvmazeService,
     private route: ActivatedRoute
