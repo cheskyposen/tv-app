@@ -1,5 +1,5 @@
 import {Component, OnInit, Input} from '@angular/core';
-import {TvmazeService} from '../../models/services/tvmaze.service';
+import {TvMazeService} from '../../models/services/tv-maze.service';
 import {Season} from '../../models/Season';
 import * as moment from 'moment';
 
@@ -14,7 +14,7 @@ export class EpisodesComponent implements OnInit {
   columnsToDisplay: string[] = [ 'title', 'summary', 'aired' ];
 
   constructor(
-    private tvMazeService: TvmazeService
+    private tvMazeService: TvMazeService
   ) {}
 
   ngOnInit() {

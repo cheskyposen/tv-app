@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Show} from '../../models/Show';
-import {TvmazeService} from '../../models/services/tvmaze.service';
+import {TvMazeService} from '../../models/services/tv-maze.service';
 
 @Component({
   selector: 'app-movies',
@@ -13,7 +13,7 @@ export class ShowsComponent implements OnInit {
   tvShows: Show[];
 
   constructor(
-    private tvmazeService: TvmazeService,
+    private tvMazeService: TvMazeService,
     private route: ActivatedRoute
     ) {
     this.title = this.route.snapshot.paramMap.get('name');
@@ -24,7 +24,7 @@ export class ShowsComponent implements OnInit {
   }
 
   getShows() {
-    this.tvmazeService.getShows(this.title).subscribe(results => { this.tvShows = results; });
+    this.tvMazeService.getShows(this.title).subscribe(results => { this.tvShows = results; });
   }
   dynamicStyles(status) {
     switch (status) {

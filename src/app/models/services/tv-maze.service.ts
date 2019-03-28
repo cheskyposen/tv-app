@@ -9,7 +9,7 @@ import {Show} from '../Show';
 @Injectable({
   providedIn: 'root'
 })
-export class TvmazeService {
+export class TvMazeService {
   showsUrl = 'http://api.tvmaze.com/search/shows?q=';
   showUrl = 'http://api.tvmaze.com/shows/';
   seasonUrl = 'http://api.tvmaze.com/seasons/';

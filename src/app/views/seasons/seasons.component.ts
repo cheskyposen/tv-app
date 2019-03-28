@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {TvmazeService} from '../../models/services/tvmaze.service';
+import {TvMazeService} from '../../models/services/tv-maze.service';
 import {Show} from '../../models/Show';
 import * as moment from 'moment';
 import {interval} from 'rxjs';
@@ -17,22 +17,21 @@ export class SeasonsComponent implements OnInit {
   duration: any;
   next: any;
   constructor(
-    private tvMazeService: TvmazeService,
+    private tvMazeService: TvMazeService,
     private route: ActivatedRoute
   ) {
     this.id = +this.route.snapshot.paramMap.get('id');
-    // this.show.upNext.nextepisode.airdate = moment();
-    // console.log(this.show.upNext.nextepisode.airdate);
+    this.next = moment();
+    console.log(this.next);
   }
 
   ngOnInit() {
     this.getShow();
     this.getSeasons();
-    // interval(5000).subscribe(() => {
-    //   const time = moment();
-    //   this.duration = moment.duration(this.show.nextEpisode.airdate.diff(time));
-    //   console.log(this.duration);
-    // });
+    interval(1000).subscribe(() => {
+      const time = moment();
+      this.duration = moment.duration(this.next.diff(time));
+    });
   }
   getShow() {
     this.tvMazeService.getShow(this.id)
