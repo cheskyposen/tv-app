@@ -22,12 +22,16 @@ export class TvmazeService {
     );
   }
   getShow(id: number): Observable<Show> {
-    return this.http.get<Show>(this.showUrl + id);
+    return this.http.get<Show>(this.showUrl + id + '?embed=nextepisode');
   }
   getSeasons(id: number): Observable<Season[]> {
-    return this.http.get<Season[]>(this.showUrl + id + '/seasons');
+    return this.http.get<Season[]>(this.showUrl + id + '/seasons').pipe(
+      map(result => (result as any[]).map(item => new Season(item)))
+    );
   }
   getEpisodes(id: number): Observable<Episode[]> {
-    return this.http.get<Episode[]>(this.seasonUrl + id + '/episodes');
+    return this.http.get<Episode[]>(this.seasonUrl + id + '/episodes').pipe(
+      map(result => (result as any[]).map(item => new Episode(item)))
+    );
   }
 }

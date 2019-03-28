@@ -4,7 +4,7 @@ export class Episode {
   id: number;
   name: string;
   number: number;
-  airdate: any;
+  airDate: any;
   runtime: number;
   image: { medium: string };
   summary: string;
@@ -13,7 +13,7 @@ export class Episode {
     this.id = args.id;
     this.name = args.name;
     this.number = args.number;
-    this.airdate = moment(args.airdate);
+    this.airDate = moment(args.airdate + 'T' + args.airtime);
     this.runtime = args.runtime;
     this.image = args.image;
     this.summary = args.summary;

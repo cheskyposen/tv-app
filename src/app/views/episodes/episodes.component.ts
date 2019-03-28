@@ -14,7 +14,7 @@ export class EpisodesComponent implements OnInit {
   columnsToDisplay: string[] = [ 'title', 'summary', 'aired' ];
 
   constructor(
-    private tvmazeService: TvmazeService
+    private tvMazeService: TvmazeService
   ) {}
 
   ngOnInit() {
@@ -22,7 +22,7 @@ export class EpisodesComponent implements OnInit {
   }
 
   getEpisodes() {
-    this.tvmazeService.getEpisodes(this.season.id).subscribe(results => { this.season.episodes = results; });
+    this.tvMazeService.getEpisodes(this.season.id).subscribe(results => { this.season.episodes = results; });
   }
 
   showSpoilers(date: any) {

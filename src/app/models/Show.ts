@@ -14,6 +14,7 @@ export class Show {
   image: { medium: string };
   summary: string;
   seasons: Season[];
+  upNext: {nextepisode: any};
 
   constructor(args?) {
     this.id = args.id;
@@ -28,5 +29,8 @@ export class Show {
     this.image = args.image;
     this.summary = args.summary;
     this.seasons = args.seasons;
+    if (args._embedded !== undefined) {
+      this.upNext = args._embedded;
+    }
   }
 }

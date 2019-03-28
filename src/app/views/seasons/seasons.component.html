@@ -1,4 +1,5 @@
-<mat-card *ngIf="show">
+<div *ngIf="show">
+<mat-card>
   <mat-card-header>
     <div *ngIf="show.image" mat-card-avatar [ngStyle]="{'background-size': 'cover', 'background-image': 'url('+show.image.medium+')'}"></div>
     <mat-card-title [innerText]="show.name"></mat-card-title>
@@ -11,9 +12,9 @@
         <mat-expansion-panel-header>
           <mat-panel-title [innerHTML]="'Season: ' + season.number">
           </mat-panel-title>
-          <mat-panel-description [innerHTML]="'Premiere Date: ' + season.premiereDate">
+          <mat-panel-description>Premiere Date: {{season.premiereDate | date}}
           </mat-panel-description>
-          <mat-panel-description [innerHTML]="'End Date: ' + season.endDate">
+          <mat-panel-description>End Date: {{season.endDate | date}}
           </mat-panel-description>
         </mat-expansion-panel-header>
         <ng-template matExpansionPanelContent>
@@ -23,3 +24,4 @@
     </mat-accordion>
   </mat-card-content>
 </mat-card>
+</div>
