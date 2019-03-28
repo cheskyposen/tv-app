@@ -27,18 +27,19 @@ export class SeasonsComponent implements OnInit {
 
   ngOnInit() {
     this.getShow();
-    this.getSeasons();
     interval(1000).subscribe(() => {
       const time = moment();
       this.duration = moment.duration(this.next.diff(time));
     });
   }
   getShow() {
-    this.tvMazeService.getShow(this.id)
-      .subscribe(result => {
+    this.tvMazeService.getShow(this.id).subscribe(result => {
         this.show = new Show(result);
+        this.getSeasons();
         console.log(this.show);
-        this.next = moment(this.show.upNext.nextepisode.airdate + 'T' + this.show.upNext.nextepisode.airtime);
+        if (this.show.upNext) {
+          this.next = moment(this.show.upNext.nextepisode.airdate + 'T' + this.show.upNext.nextepisode.airtime);
+        }
         console.log(this.next);
       });
   }

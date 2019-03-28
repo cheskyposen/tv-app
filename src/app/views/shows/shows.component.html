@@ -7,7 +7,7 @@
           <h5 [innerHTML]="show.name"></h5>
         </mat-panel-title>
         <mat-panel-description>
-          <p [innerHTML]="show.premiered | date"></p>
+          <p *ngIf="show.premiered.isValid()">{{show.premiered | date}}</p>
         </mat-panel-description>
         <mat-panel-description>
           <p [innerHTML]="'Status: ' + show.status" [ngStyle]="dynamicStyles(show.status)"></p>

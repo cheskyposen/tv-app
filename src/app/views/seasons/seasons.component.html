@@ -29,7 +29,7 @@
           </mat-panel-description>
         </mat-expansion-panel-header>
         <ng-template matExpansionPanelContent>
-          <app-episodes *ngIf="season.premiereDate" [season]="season" [checked]="checked"></app-episodes>
+          <app-episodes *ngIf="season.premiereDate.isValid()" [season]="season" [checked]="checked"></app-episodes>
         </ng-template>
       </mat-expansion-panel>
     </mat-accordion>
