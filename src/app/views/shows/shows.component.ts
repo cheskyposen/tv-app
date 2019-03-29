@@ -1,14 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Show} from '../../models/Show';
 import {TvMazeService} from '../../models/services/tv-maze.service';
+import {takeUntil} from 'rxjs/operators';
 
 @Component({
   selector: 'app-movies',
   templateUrl: './shows.component.html',
   styleUrls: ['./shows.component.scss']
 })
-export class ShowsComponent implements OnInit {
+export class ShowsComponent implements OnInit, OnDestroy {
+  onDestroyEvent: EventEmitter<string> = new EventEmitter();
   title: string;
   tvShows: Show[];
 
@@ -22,9 +24,11 @@ export class ShowsComponent implements OnInit {
   ngOnInit() {
     this.getShows();
   }
-
+  ngOnDestroy() {
+    this.onDestroyEvent.emit();
+  }
   getShows() {
-    this.tvMazeService.getShows(this.title).subscribe(results => { this.tvShows = results; });
+    this.tvMazeService.getShows(this.title).pipe(takeUntil(this.onDestroyEvent)).subscribe(results => { this.tvShows = results; });
   }
   dynamicStyles(status) {
     switch (status) {

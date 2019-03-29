@@ -17,6 +17,7 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatCardModule} from '@angular/material/card';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatChipsModule} from '@angular/material/chips';
+import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -58,7 +59,8 @@ import { CountdownDirective } from './controllers/countdown.directive';
     MatDividerModule,
     MatCardModule,
     MatSlideToggleModule,
-    MatChipsModule
+    MatChipsModule,
+    MatBottomSheetModule
   ],
   providers: [],
   bootstrap: [AppComponent]

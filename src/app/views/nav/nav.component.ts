@@ -1,14 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnDestroy, OnInit} from '@angular/core';
 import { Location } from '@angular/common';
 import {interval, Observable, timer} from 'rxjs';
-import {map, take} from 'rxjs/operators';
+import {map, take, takeUntil} from 'rxjs/operators';
 
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.scss']
 })
-export class NavComponent implements OnInit {
+export class NavComponent implements OnInit, OnDestroy {
+  onDestroyEvent: EventEmitter<string> = new EventEmitter();
   title = 'tvmaze search';
   now: number;
   counter$: Observable<number>;
@@ -16,14 +17,17 @@ export class NavComponent implements OnInit {
   constructor(private location: Location) {
     this.counter$ = timer(0, 1000).pipe(
       take(this.count),
-      map(() => --this.count)
+      map(() => --this.count),
+      takeUntil(this.onDestroyEvent)
     );
   }
 
   ngOnInit() {
-    interval(1000).subscribe(() => { this.now = Date.now(); });
+    interval(1000).pipe(takeUntil(this.onDestroyEvent)).subscribe(() => { this.now = Date.now(); });
   }
-
+  ngOnDestroy() {
+    this.onDestroyEvent.emit();
+  }
   goBack(): void {
     this.location.back();
   }

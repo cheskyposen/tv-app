@@ -1,6 +1,6 @@
 <div *ngIf="show" class="countdown">
   <mat-chip-list *ngIf="duration" [ngStyle]="duration.asSeconds() > 0? {'display': 'block'}:{'display': 'none'}">
-    <mat-chip color="warn" selected
+    <mat-chip color="warn" selected (click)="openBottomSheet()"
               [innerText]="'Next episode in: '
               + duration.months() + ' Months, '
               + duration.days() + ' Days, '

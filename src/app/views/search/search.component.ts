@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {debounceTime, distinctUntilChanged, switchMap} from 'rxjs/operators';
+import {Component, EventEmitter, OnDestroy, OnInit} from '@angular/core';
+import {debounceTime, distinctUntilChanged, switchMap, takeUntil} from 'rxjs/operators';
 import {Observable, Subject} from 'rxjs';
 import {TvMazeService} from '../../models/services/tv-maze.service';
 import {Show} from '../../models/Show';
@@ -9,7 +9,8 @@ import {Show} from '../../models/Show';
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss']
 })
-export class SearchComponent implements OnInit {
+export class SearchComponent implements OnInit, OnDestroy {
+  onDestroyEvent: EventEmitter<string> = new EventEmitter();
   shows$: Observable<Show[]>;
   private searchTerms = new Subject<string>();
 
@@ -22,7 +23,11 @@ export class SearchComponent implements OnInit {
       distinctUntilChanged(),
       // switch to new search observable each time the term changes
       switchMap((term: string) => this.tvMazeService.getShows(term)),
+      takeUntil(this.onDestroyEvent)
     );
+  }
+  ngOnDestroy() {
+    this.onDestroyEvent.emit();
   }
   // Push a search term into the observable stream.
   search(term: string): void {
