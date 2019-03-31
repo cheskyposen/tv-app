@@ -10,9 +10,12 @@ import {takeUntil} from 'rxjs/operators';
   styleUrls: ['./episodes.component.scss'],
 })
 export class EpisodesComponent implements OnInit, OnDestroy {
+  // creates an event to unsubscribe when emitted
   onDestroyEvent: EventEmitter<string> = new EventEmitter();
+  // gets from parent component season & checked
   @Input() season: Season;
   @Input() checked: boolean;
+  // mat table columns
   columnsToDisplay: string[] = [ 'title', 'summary', 'aired' ];
 
   constructor(
@@ -20,16 +23,19 @@ export class EpisodesComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
+    // on init does api call to get episodes
     this.getEpisodes();
   }
   ngOnDestroy() {
+    // on leave page it emits event
     this.onDestroyEvent.emit();
   }
+  // call tv maze api call func and subscribes season.episodes to the returned results
   getEpisodes() {
     this.tvMazeService.getEpisodes(this.season.id).pipe(takeUntil(this.onDestroyEvent))
       .subscribe(results => { this.season.episodes = results; });
   }
-
+  // switch to show spoilers or not, default (false) does not show
   showSpoilers(date: any) {
     return !this.checked && moment().isBefore(date);
   }

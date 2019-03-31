@@ -13,7 +13,7 @@ export class Episode {
     this.id = args.id;
     this.name = args.name;
     this.number = args.number;
-    this.airDate = moment(args.airdate + 'T' + args.airtime);
+    this.airDate = moment(args.airdate + 'T' + args.airtime, moment.HTML5_FMT.DATETIME_LOCAL);
     this.runtime = args.runtime;
     this.image = args.image;
     this.summary = args.summary;

@@ -1,6 +1,6 @@
 <mat-toolbar color="primary">
   <button mat-button (click)="goBack()"><mat-icon>arrow_back</mat-icon></button>
   <a routerLink="/">{{ title | uppercase }}</a>
-  <button mat-button>{{now | date:'h:mm:ss a'}}</button>
+  <button mat-button>{{time | date:'h:mm:ss a'}}</button>
 </mat-toolbar>
 

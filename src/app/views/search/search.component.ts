@@ -10,6 +10,7 @@ import {Show} from '../../models/Show';
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit, OnDestroy {
+  // creates an event to unsubscribe when emitted
   onDestroyEvent: EventEmitter<string> = new EventEmitter();
   shows$: Observable<Show[]>;
   private searchTerms = new Subject<string>();
@@ -23,10 +24,12 @@ export class SearchComponent implements OnInit, OnDestroy {
       distinctUntilChanged(),
       // switch to new search observable each time the term changes
       switchMap((term: string) => this.tvMazeService.getShows(term)),
+      // unsubscribe on emit of this event
       takeUntil(this.onDestroyEvent)
     );
   }
   ngOnDestroy() {
+    // emits event
     this.onDestroyEvent.emit();
   }
   // Push a search term into the observable stream.

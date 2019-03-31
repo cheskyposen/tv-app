@@ -12,8 +12,8 @@ export class Season {
   constructor(args?) {
     this.id = args.id;
     this.number = args.number;
-    this.premiereDate = moment(args.premiereDate);
-    this.endDate = moment(args.endDate);
+    this.premiereDate = moment(args.premiereDate, moment.HTML5_FMT.DATETIME_LOCAL);
+    this.endDate = moment(args.endDate, moment.HTML5_FMT.DATETIME_LOCAL);
     this.image = args.image;
     this.episodes = args.episodes;
   }

@@ -23,7 +23,7 @@ export class Show {
     this.genres = args.genres;
     this.status = args.status;
     this.runtime = args.runtime;
-    this.premiered = moment(args.premiered);
+    this.premiered = moment(args.premiered, moment.HTML5_FMT.DATETIME_LOCAL);
     this.officialSite = args.officialSite;
     this.rating = args.rating;
     this.image = args.image;

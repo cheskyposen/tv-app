@@ -15,20 +15,23 @@ export class TvMazeService {
   seasonUrl = 'http://api.tvmaze.com/seasons/';
 
   constructor(private http: HttpClient) { }
-
+  // function calls api and returns observable array of show
   getShows(search: string): Observable<Show[]> {
     return this.http.get(this.showsUrl + search).pipe(
       map(result => (result as any[]).map(item => new Show(item.show)))
     );
   }
+  // function calls api and returns observable object of show
   getShow(id: number): Observable<Show> {
     return this.http.get<Show>(this.showUrl + id + '?embed=nextepisode');
   }
+  // function calls api and returns observable array of season
   getSeasons(id: number): Observable<Season[]> {
     return this.http.get<Season[]>(this.showUrl + id + '/seasons').pipe(
       map(result => (result as any[]).map(item => new Season(item)))
     );
   }
+  // function calls api and returns observable array of episode
   getEpisodes(id: number): Observable<Episode[]> {
     return this.http.get<Episode[]>(this.seasonUrl + id + '/episodes').pipe(
       map(result => (result as any[]).map(item => new Episode(item)))
