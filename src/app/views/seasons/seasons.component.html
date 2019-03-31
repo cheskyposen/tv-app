@@ -1,14 +1,14 @@
 <div *ngIf="show" class="countdown">
-  <mat-chip-list *ngIf="duration" [ngStyle]="duration.asSeconds() > 0? {'display': 'block'}:{'display': 'none'}">
-    <mat-chip color="warn" selected (click)="openBottomSheet()"
+  <div *ngIf="duration" [ngStyle]="duration.asSeconds() > 0? {'display': 'block'}:{'display': 'none'}">
+    <button mat-flat-button color="warn" (click)="openBottomSheet()"
               [innerText]="'Next episode in: '
               + duration.months() + ' Months, '
               + duration.days() + ' Days, '
               + duration.hours() + ' Hours, '
               + duration.minutes() +' Minutes, '
               + duration.seconds() +' Seconds.'">
-    </mat-chip>
-  </mat-chip-list>
+    </button>
+  </div>
 </div>
 <mat-card *ngIf="show">
   <mat-card-header>

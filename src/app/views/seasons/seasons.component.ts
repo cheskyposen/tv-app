@@ -5,7 +5,8 @@ import {Show} from '../../models/Show';
 import * as moment from 'moment';
 import {interval} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
-import {MatBottomSheet, MatBottomSheetRef} from '@angular/material';
+import {MatBottomSheet} from '@angular/material';
+import {NextEpisodeComponent} from '../next-episode/next-episode.component';
 
 @Component({
   selector: 'app-seasons',
@@ -63,19 +64,6 @@ export class SeasonsComponent implements OnInit, OnDestroy {
     });
   }
   openBottomSheet(): void {
-    this.bottomSheet.open(NextEpisodeSheetComponent);
-  }
-}
-
-@Component({
-  selector: 'app-next-episode-sheet',
-  templateUrl: 'next-episode-sheet.html',
-})
-export class NextEpisodeSheetComponent {
-  constructor(private bottomSheetRef: MatBottomSheetRef<NextEpisodeSheetComponent>) {}
-
-  openLink(event: MouseEvent): void {
-    this.bottomSheetRef.dismiss();
-    event.preventDefault();
+    this.bottomSheet.open(NextEpisodeComponent, { data: this.show.upNext.nextepisode });
   }
 }

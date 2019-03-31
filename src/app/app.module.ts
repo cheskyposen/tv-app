@@ -28,6 +28,7 @@ import { EpisodesComponent } from './views/episodes/episodes.component';
 import { NavComponent } from './views/nav/nav.component';
 import { SeasonsComponent } from './views/seasons/seasons.component';
 import { CountdownDirective } from './controllers/countdown.directive';
+import { NextEpisodeComponent } from './views/next-episode/next-episode.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { CountdownDirective } from './controllers/countdown.directive';
     EpisodesComponent,
     NavComponent,
     SeasonsComponent,
-    CountdownDirective
+    CountdownDirective,
+    NextEpisodeComponent
   ],
   imports: [
     BrowserModule,
@@ -63,6 +65,7 @@ import { CountdownDirective } from './controllers/countdown.directive';
     MatBottomSheetModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [NextEpisodeComponent]
 })
 export class AppModule { }
