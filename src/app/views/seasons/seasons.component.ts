@@ -51,7 +51,7 @@ export class SeasonsComponent implements OnInit, OnDestroy {
         // makes an api call func to get seasons
         this.getSeasons();
         // checks if there's an upcoming season and calls the countdown func
-        if (this.show.upNext) {
+        if (this.show.nextEpisode) {
           this.setupCountdown();
         }
         console.log(this.show);
@@ -65,7 +65,7 @@ export class SeasonsComponent implements OnInit, OnDestroy {
 
   private setupCountdown() {
     // assigns time and date of next episode to this.next
-    this.next = moment(this.show.upNext.nextepisode.airdate + 'T' + this.show.upNext.nextepisode.airtime, moment.HTML5_FMT.DATETIME_LOCAL);
+    this.next = moment(this.show.nextEpisode.airDate, moment.HTML5_FMT.DATETIME_LOCAL);
     console.log(this.next);
     // subscribes to countdown function
     this.countdown.subscribe(() => {
@@ -77,6 +77,6 @@ export class SeasonsComponent implements OnInit, OnDestroy {
   }
   // opens the mat bottom sheet and passed the data to displayed in sheet
   openBottomSheet(): void {
-    this.bottomSheet.open(NextEpisodeComponent, { data: this.show.upNext.nextepisode });
+    this.bottomSheet.open(NextEpisodeComponent, { data: this.show.nextEpisode });
   }
 }

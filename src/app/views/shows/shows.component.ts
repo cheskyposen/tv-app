@@ -3,6 +3,7 @@ import {ActivatedRoute} from '@angular/router';
 import {Show} from '../../models/Show';
 import {TvMazeService} from '../../models/services/tv-maze.service';
 import {takeUntil} from 'rxjs/operators';
+import {Episode} from '../../models/Episode';
 
 @Component({
   selector: 'app-movies',
@@ -33,7 +34,18 @@ export class ShowsComponent implements OnInit, OnDestroy {
   }
   getShows() {
     // calls the tv maze service api call func, pipes in an event to stop subscription, next it assigns http call results to local tvShows
-    this.tvMazeService.getShows(this.title).pipe(takeUntil(this.onDestroyEvent)).subscribe(results => { this.tvShows = results; });
+    this.tvMazeService.getShows(this.title).pipe(takeUntil(this.onDestroyEvent))
+      .subscribe((results) => {
+        this.tvShows = results;
+        this.tvShows.forEach((show) => {
+          if (show.prevUrl) {
+            this.tvMazeService.apiCall(show.prevUrl).subscribe((res) => show.prevEpisode = new Episode(res));
+          }
+          if (show.nextUrl) {
+            this.tvMazeService.apiCall(show.nextUrl).subscribe((res) => show.nextEpisode = new Episode(res));
+          }
+        });
+      });
   }
   // changes the color of status according to status
   dynamicStyles(status) {

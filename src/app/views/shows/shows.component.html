@@ -14,12 +14,14 @@
         </mat-panel-description>
       </mat-expansion-panel-header>
       <ng-template matExpansionPanelContent>
-          <img *ngIf="show.image" alt="{{show.name}} cover" [src]="show.image.medium">
+          <img *ngIf="show.image" alt="{{show.name}} cover" [src]="show.image">
           <span [innerHTML]="show.summary"></span>
           <hr>
           <h5 [innerHTML]="'<em>Language:</em> ' + show.language"></h5>
-          <h4 *ngIf="show.rating.average"><mat-icon>star_rate</mat-icon>{{show.rating.average}}</h4>
-          <small *ngFor="let genre of show.genres">{{genre}}, </small>
+          <h4 *ngIf="show.rating"><mat-icon>star_rate</mat-icon>{{show.rating}}</h4>
+          <small *ngFor="let genre of show.genres">{{genre}}, </small><br>
+          <strong *ngIf="show.prevEpisode" [ngStyle]="{'text-align':'left'}">{{show.prevEpisode.airDate | date}}</strong>
+        <strong *ngIf="show.nextEpisode" [ngStyle]="{'text-align':'right'}">{{show.nextEpisode.airDate | date}}</strong>
           <mat-action-row>
             <a [href]="show.officialSite" mat-raised-button color="primary" target="_blank">Visit site</a>
             <button mat-raised-button color="accent" [routerLink]="'/show/' + show.id">Details</button>

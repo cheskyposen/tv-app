@@ -3,7 +3,7 @@
   <ng-container matColumnDef="title">
     <th mat-header-cell *matHeaderCellDef>EPISODE</th>
     <td mat-cell *matCellDef="let episode" class="container">
-      <img *ngIf="episode.image" [src]="episode.image.medium" [alt]="episode.name">
+      <img *ngIf="episode.image" [src]="episode.image" [alt]="episode.name">
       <h3 [innerText]="episode.name" [ngClass]="episode.image === null? 'blackCenter': 'whiteCenter'"></h3>
     </td>
   </ng-container>
