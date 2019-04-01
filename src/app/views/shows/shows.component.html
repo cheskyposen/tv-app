@@ -24,8 +24,8 @@
       </div>
       Genres: <small *ngFor="let genre of show.genres">{{genre}}, </small>
       <div class="details">
-        <p>Previous Episode: <strong *ngIf="show.prevEpisode">{{show.prevEpisode.airDate | date}}</strong></p>
-        <p>Next Episode: <strong *ngIf="show.nextEpisode">{{show.nextEpisode.airDate | date:'MMMM d, y, HH:mm'}}</strong></p>
+        <p *ngIf="show.prevEpisode">Previous Episode: <strong>{{show.prevEpisode.airDate | date}}</strong></p>
+        <p *ngIf="show.nextEpisode">Next Episode: <strong>{{show.nextEpisode.airDate | date:'MMMM d, y, HH:mm'}}</strong></p>
       </div>
       <mat-action-row>
         <a [href]="show.officialSite" mat-raised-button color="primary" target="_blank">Visit site</a>

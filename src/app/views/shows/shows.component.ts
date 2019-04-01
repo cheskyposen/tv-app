@@ -38,16 +38,18 @@ export class ShowsComponent implements OnInit, OnDestroy {
         this.tvShows = results;
         this.tvShows.forEach((show) => {
           if (show.prevUrl) {
-            this.tvMazeService.getEpisode(show.prevUrl).subscribe((res) => show.prevEpisode = new Episode(res));
+            this.tvMazeService.getEpisode(show.prevUrl)
+              .pipe(takeUntil(this.onDestroyEvent)).subscribe((res) => show.prevEpisode = new Episode(res));
           }
           if (show.nextUrl) {
-            this.tvMazeService.getEpisode(show.nextUrl).subscribe((res) => show.nextEpisode = new Episode(res));
+            this.tvMazeService.getEpisode(show.nextUrl)
+              .pipe(takeUntil(this.onDestroyEvent)).subscribe((res) => show.nextEpisode = new Episode(res));
           }
         });
       });
   }
   // changes the color of status according to status
-  private dynamicStyles(status): object {
+  private dynamicStyles(status): any {
     switch (status) {
       case('Running'):
         return {color : 'green'};
