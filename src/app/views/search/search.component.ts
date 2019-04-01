@@ -33,7 +33,7 @@ export class SearchComponent implements OnInit, OnDestroy {
     this.onDestroyEvent.emit();
   }
   // Push a search term into the observable stream.
-  private search(term: string): void {
+  search(term: string): void {
     this.searchTerms.next(term);
   }
 }
