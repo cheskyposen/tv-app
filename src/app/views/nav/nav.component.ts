@@ -13,7 +13,6 @@ export class NavComponent implements OnInit, OnDestroy {
   onDestroyEvent: EventEmitter<string> = new EventEmitter();
   title = 'tvmaze search';
   time: number;
-  count = 60;
   constructor(private location: Location) {}
   // on init it subscribes to interval and init time every sec
   ngOnInit() {

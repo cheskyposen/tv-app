@@ -1,10 +1,8 @@
 import {Season} from './Season';
 import * as moment from 'moment';
 import {Episode} from './Episode';
-import {TvMazeService} from './services/tv-maze.service';
 
 export class Show {
-  // private tvMazeService: TvMazeService;
   id: number;
   name: string;
   language: string;
@@ -38,16 +36,6 @@ export class Show {
         this.prevUrl = (args._links.previousepisode) ? args._links.previousepisode.href : null;
         this.nextUrl = (args._links.nextepisode) ? args._links.nextepisode.href : null;
       }
-      // if (args._links) {
-      //   if (args._links.previousepisode) {
-      //     this.tvMazeService.apiCall(args._links.previousepisode.href)
-      //       .subscribe((result) => this.prevEpisode = result);
-      //   }
-      //   if (args._links.nextepisode) {
-      //     this.tvMazeService.apiCall(args._links.nextepisode.href)
-      //       .subscribe((result) => this.nextEpisode = result);
-      //   }
-      // }
     }
   }
 }

@@ -1,31 +1,36 @@
 <h2>{{ title | uppercase }}</h2>
 
-  <mat-accordion *ngIf="tvShows">
-    <mat-expansion-panel *ngFor="let show of tvShows">
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          <h5 [innerHTML]="show.name"></h5>
-        </mat-panel-title>
-        <mat-panel-description>
-          <p *ngIf="show.premiered.isValid()">{{show.premiered | date}}</p>
-        </mat-panel-description>
-        <mat-panel-description>
-          <p [innerHTML]="'Status: ' + show.status" [ngStyle]="dynamicStyles(show.status)"></p>
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      <ng-template matExpansionPanelContent>
-          <img *ngIf="show.image" alt="{{show.name}} cover" [src]="show.image">
-          <span [innerHTML]="show.summary"></span>
-          <hr>
-          <h5 [innerHTML]="'<em>Language:</em> ' + show.language"></h5>
-          <h4 *ngIf="show.rating"><mat-icon>star_rate</mat-icon>{{show.rating}}</h4>
-          <small *ngFor="let genre of show.genres">{{genre}}, </small><br>
-          <strong *ngIf="show.prevEpisode" [ngStyle]="{'text-align':'left'}">{{show.prevEpisode.airDate | date}}</strong>
-        <strong *ngIf="show.nextEpisode" [ngStyle]="{'text-align':'right'}">{{show.nextEpisode.airDate | date}}</strong>
-          <mat-action-row>
-            <a [href]="show.officialSite" mat-raised-button color="primary" target="_blank">Visit site</a>
-            <button mat-raised-button color="accent" [routerLink]="'/show/' + show.id">Details</button>
-          </mat-action-row>
-      </ng-template>
-    </mat-expansion-panel>
-  </mat-accordion>
+<mat-accordion *ngIf="tvShows">
+  <mat-expansion-panel *ngFor="let show of tvShows">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <h5 [innerHTML]="show.name"></h5>
+      </mat-panel-title>
+      <mat-panel-description>
+        <p *ngIf="show.premiered.isValid()">{{show.premiered | date}}</p>
+      </mat-panel-description>
+      <mat-panel-description>
+        <!--dynamicStyles() changes status color according to status-->
+        <p [innerHTML]="'Status: ' + show.status" [ngStyle]="dynamicStyles(show.status)"></p>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <ng-template matExpansionPanelContent>
+      <img *ngIf="show.image" alt="{{show.name}} cover" [src]="show.image">
+      <span [innerHTML]="show.summary"></span>
+      <hr>
+      <div class="details">
+        <p>Language: <strong><em>{{show.language}}</em></strong></p>
+        <h4 *ngIf="show.rating"><mat-icon>star_rate</mat-icon>{{show.rating}}</h4>
+      </div>
+      Genres: <small *ngFor="let genre of show.genres">{{genre}}, </small>
+      <div class="details">
+        <p>Previous Episode: <strong *ngIf="show.prevEpisode">{{show.prevEpisode.airDate | date}}</strong></p>
+        <p>Next Episode: <strong *ngIf="show.nextEpisode">{{show.nextEpisode.airDate | date:'MMMM d, y, HH:mm'}}</strong></p>
+      </div>
+      <mat-action-row>
+        <a [href]="show.officialSite" mat-raised-button color="primary" target="_blank">Visit site</a>
+        <button mat-raised-button color="accent" [routerLink]="'/show/' + show.id">Details</button>
+      </mat-action-row>
+    </ng-template>
+  </mat-expansion-panel>
+</mat-accordion>

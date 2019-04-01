@@ -18,6 +18,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -62,7 +63,8 @@ import { NextEpisodeComponent } from './views/next-episode/next-episode.componen
     MatCardModule,
     MatSlideToggleModule,
     MatChipsModule,
-    MatBottomSheetModule
+    MatBottomSheetModule,
+    MatGridListModule
   ],
   providers: [],
   bootstrap: [AppComponent],

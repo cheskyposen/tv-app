@@ -1,4 +1,5 @@
 <div *ngIf="show" class="countdown">
+  <!--if there's upcoming episode it displays countdown-->
   <div *ngIf="duration" [ngStyle]="duration.asSeconds() > 0? {'display': 'block'}:{'display': 'none'}">
     <button mat-flat-button color="warn" (click)="openBottomSheet()"
               [innerText]="'Next episode in: '

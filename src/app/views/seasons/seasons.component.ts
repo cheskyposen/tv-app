@@ -7,6 +7,7 @@ import {interval} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {MatBottomSheet} from '@angular/material';
 import {NextEpisodeComponent} from '../next-episode/next-episode.component';
+import {Episode} from '../../models/Episode';
 
 @Component({
   selector: 'app-seasons',
@@ -50,9 +51,14 @@ export class SeasonsComponent implements OnInit, OnDestroy {
         this.show = new Show(result);
         // makes an api call func to get seasons
         this.getSeasons();
-        // checks if there's an upcoming season and calls the countdown func
-        if (this.show.nextEpisode) {
-          this.setupCountdown();
+        // checks if there's an upcoming season and makes api call for upcoming episode
+        if (this.show.nextUrl) {
+          this.tvMazeService.getEpisode(this.show.nextUrl)
+            .subscribe((res) => {
+              this.show.nextEpisode = new Episode(res);
+              // sets up the count down
+              this.setupCountdown();
+            });
         }
         console.log(this.show);
       });

@@ -20,7 +20,7 @@ export class TvMazeService {
     );
   }
   // gets back previous and next episode
-  apiCall(url: string): Observable<Episode> {
+  getEpisode(url: string): Observable<Episode> {
     return this.http.get<Episode>(url);
   }
   // function calls api and returns observable object of show
