@@ -32,7 +32,6 @@ export class SeasonsComponent implements OnInit, OnDestroy {
     // takes a snapshot from url and assigns 'name' to var id
     this.id = +this.route.snapshot.paramMap.get('id');
   }
-
   ngOnInit() {
     // calls the function to get show on init
     this.getShow();
@@ -41,8 +40,7 @@ export class SeasonsComponent implements OnInit, OnDestroy {
     // when leaving page emits event to unsubscribe from all subscriptions
     this.onDestroyEvent.emit();
   }
-
-  getShow() {
+  private getShow(): void {
     // calls the tv maze service api call func, pipes in an event to stop subscription,
     this.tvMazeService.getShow(this.id)
       .pipe(takeUntil(this.onDestroyEvent))
@@ -60,29 +58,26 @@ export class SeasonsComponent implements OnInit, OnDestroy {
               this.setupCountdown();
             });
         }
-        console.log(this.show);
       });
   }
-  getSeasons() {
+  private getSeasons(): void {
     this.tvMazeService.getSeasons(this.id)
       .pipe(takeUntil(this.onDestroyEvent))
       .subscribe(results => { this.show.seasons = results; });
   }
-
-  private setupCountdown() {
+  // count down function
+  private setupCountdown(): void {
     // assigns time and date of next episode to this.next
     this.next = moment(this.show.nextEpisode.airDate, moment.HTML5_FMT.DATETIME_LOCAL);
-    console.log(this.next);
     // subscribes to countdown function
     this.countdown.subscribe(() => {
       const time = moment();
       // compares now with the next episode and gets the difference
       this.duration = moment.duration(this.next.diff(time));
-      console.log(this.duration);
     });
   }
   // opens the mat bottom sheet and passed the data to displayed in sheet
-  openBottomSheet(): void {
+  private openBottomSheet(): void {
     this.bottomSheet.open(NextEpisodeComponent, { data: this.show.nextEpisode });
   }
 }

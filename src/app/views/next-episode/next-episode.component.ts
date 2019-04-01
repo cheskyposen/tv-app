@@ -13,7 +13,7 @@ export class NextEpisodeComponent {
     @Inject(MAT_BOTTOM_SHEET_DATA) public data: any
   ) {}
   // closes mat bottom sheet
-  close(): void {
+  private close(): void {
     this.bottomSheetRef.dismiss();
   }
 }

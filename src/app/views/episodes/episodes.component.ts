@@ -31,12 +31,12 @@ export class EpisodesComponent implements OnInit, OnDestroy {
     this.onDestroyEvent.emit();
   }
   // call tv maze api call func and subscribes season.episodes to the returned results
-  getEpisodes() {
+  private getEpisodes(): void {
     this.tvMazeService.getEpisodes(this.season.id).pipe(takeUntil(this.onDestroyEvent))
       .subscribe(results => { this.season.episodes = results; });
   }
   // switch to show spoilers or not, default (false) does not show
-  showSpoilers(date: any) {
+  private showSpoilers(date: any): boolean {
     return !this.checked && moment().isBefore(date);
   }
 }

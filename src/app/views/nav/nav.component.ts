@@ -23,7 +23,7 @@ export class NavComponent implements OnInit, OnDestroy {
     this.onDestroyEvent.emit();
   }
   // goes to previous page
-  goBack(): void {
+  private goBack(): void {
     this.location.back();
   }
 }

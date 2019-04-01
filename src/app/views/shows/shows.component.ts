@@ -23,7 +23,6 @@ export class ShowsComponent implements OnInit, OnDestroy {
     // takes a snapshot from url and assigns 'name' to var title
     this.title = this.route.snapshot.paramMap.get('name');
   }
-
   ngOnInit() {
     // calls the function to get shows on init
     this.getShows();
@@ -32,7 +31,7 @@ export class ShowsComponent implements OnInit, OnDestroy {
     // when leaving page emits event to unsubscribe
     this.onDestroyEvent.emit();
   }
-  getShows() {
+  private getShows(): void {
     // calls the tv maze service api call func, pipes in an event to stop subscription, next it assigns http call results to local tvShows
     this.tvMazeService.getShows(this.title).pipe(takeUntil(this.onDestroyEvent))
       .subscribe((results) => {
@@ -48,7 +47,7 @@ export class ShowsComponent implements OnInit, OnDestroy {
       });
   }
   // changes the color of status according to status
-  dynamicStyles(status) {
+  private dynamicStyles(status): object {
     switch (status) {
       case('Running'):
         return {color : 'green'};
