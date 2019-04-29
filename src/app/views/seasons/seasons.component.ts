@@ -42,8 +42,7 @@ export class SeasonsComponent implements OnInit, OnDestroy {
   }
   private getShow(): void {
     // calls the tv maze service api call func, pipes in an event to stop subscription,
-    this.tvMazeService.getShow(this.id)
-      .pipe(takeUntil(this.onDestroyEvent))
+    this.tvMazeService.getShow(this.id).pipe(takeUntil(this.onDestroyEvent))
       .subscribe((result) => {
         // next it assigns http call result to show
         this.show = new Show(result);
@@ -51,7 +50,7 @@ export class SeasonsComponent implements OnInit, OnDestroy {
         this.getSeasons();
         // checks if there's an upcoming season and makes api call for upcoming episode
         if (this.show.nextUrl) {
-          this.tvMazeService.getEpisode(this.show.nextUrl)
+          this.tvMazeService.getEpisode(this.show.nextUrl).pipe(takeUntil(this.onDestroyEvent))
             .subscribe((res) => {
               this.show.nextEpisode = new Episode(res);
               // sets up the count down
