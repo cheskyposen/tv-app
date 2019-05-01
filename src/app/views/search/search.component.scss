@@ -3,26 +3,24 @@ h2{
   text-align: center;
 }
 div{
+  margin: 1rem auto 0;
+  min-height: 600px;
+  max-height: 75%;
   display: flex;
-  flex-direction: row;
-  height: 100%;
-  width: 100%;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
+  width: 40%;
 
   form {
-    margin: 5rem;
-    border: darkcyan 2px solid;
-    border-radius: 50px;
-    padding: 0.5rem 1rem;
-    width: 50%;
+    min-width: 180px;
+    max-width: 720px;
+    width: 100%;
 
-    mat-form-field {
-      width: 70%;
-      margin: 0 1rem;
-    }
-    button{
-      float: right;
+     mat-form-field {
+        width: 100%;
+       button {
+         align-self: center;
+       }
     }
   }
 }

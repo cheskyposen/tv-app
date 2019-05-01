@@ -1,7 +1,8 @@
 <h2>Search for your favourite TV shows</h2>
 <div>
     <form>
-      <mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Search for a TV show</mat-label>
         <input #searchBox id="search-box" (input)="search(searchBox.value)" type="text"
                placeholder="Search for a TV show" aria-label="TvShow" matInput [matAutocomplete]="auto">
         <mat-autocomplete #auto="matAutocomplete">
@@ -9,9 +10,9 @@
             {{option.name}}
           </mat-option>
         </mat-autocomplete>
+        <button mat-mini-fab color="accent" matSuffix routerLink="/search/{{searchBox.value}}">
+          <mat-icon aria-label="icon-button with a search icon">search</mat-icon>
+        </button>
       </mat-form-field>
-      <button mat-fab color="accent" routerLink="/search/{{searchBox.value}}">
-        <mat-icon aria-label="icon-button with a search icon">search</mat-icon>
-      </button>
     </form>
 </div>
