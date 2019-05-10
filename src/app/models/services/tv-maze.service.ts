@@ -21,6 +21,7 @@ export class TvMazeService {
   }
   // gets back previous and next episode
   getEpisode(url: string): Observable<Episode> {
+    if (url.substring(4) === ':') { url = `https${url.substring(4)}`; }
     return this.http.get<Episode>(url);
   }
   // function calls api and returns observable object of show
