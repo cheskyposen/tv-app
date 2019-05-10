@@ -10,7 +10,7 @@ import {Show} from '../Show';
   providedIn: 'root'
 })
 export class TvMazeService {
-  baseUrl = 'http://api.tvmaze.com/';
+  baseUrl = 'https://api.tvmaze.com/';
 
   constructor(private http: HttpClient) { }
   // function calls api and returns observable array of show
