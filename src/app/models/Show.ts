@@ -33,8 +33,10 @@ export class Show {
       this.summary = args.summary;
       this.seasons = args.seasons;
       if (args._links) {
-        this.prevUrl = (args._links.previousepisode) ? args._links.previousepisode.href : null;
-        this.nextUrl = (args._links.nextepisode) ? args._links.nextepisode.href : null;
+        this.prevUrl = (args._links.previousepisode) ? args._links.previousepisode.href.substring(4, 1) === ':' ?
+          'https' + args._links.previousepisode.href.substring(4) : args._links.previousepisode.href : null;
+        this.nextUrl = (args._links.nextepisode) ? args._links.nextepisode.href.substring(4, 1) === ':' ?
+          'https' + args._links.nextepisode.href.substring(4) : args._links.nextepisode.href : null;
       }
     }
   }
