@@ -15,7 +15,8 @@ export class Season {
       this.number = args.number;
       this.premiereDate = moment(args.premiereDate, moment.HTML5_FMT.DATE);
       this.endDate = moment(args.endDate, moment.HTML5_FMT.DATE);
-      this.image = (args.image) ? args.image.medium : null;
+      this.image = (args.image) ? args.image.medium.charAt(4) === ':' ?
+        'https' + args.image.medium.substring(4) : args.image.medium : null;
       this.episodes = args.episodes;
     }
   }

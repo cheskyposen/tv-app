@@ -16,7 +16,8 @@ export class Episode {
       this.number = args.number;
       this.airDate = moment(args.airdate + 'T' + args.airtime, moment.HTML5_FMT.DATETIME_LOCAL);
       this.runtime = args.runtime;
-      this.image = (args.image) ? args.image.medium : null;
+      this.image = (args.image) ? args.image.medium.charAt(4) === ':' ?
+        'https' + args.image.medium.substring(4) : args.image.medium : null;
       this.summary = args.summary;
     }
   }

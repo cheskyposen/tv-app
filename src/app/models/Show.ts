@@ -29,7 +29,8 @@ export class Show {
       this.premiered = moment(args.premiered, moment.HTML5_FMT.DATETIME_LOCAL);
       this.officialSite = args.officialSite;
       this.rating = (args.rating) ? args.rating.average : null;
-      this.image = (args.image) ? args.image.medium : null;
+      this.image = (args.image) ? args.image.medium.charAt(4) === ':' ?
+        'https' + args.image.medium.substring(4) : args.image.medium : null;
       this.summary = args.summary;
       this.seasons = args.seasons;
       if (args._links) {
