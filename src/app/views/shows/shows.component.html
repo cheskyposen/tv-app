@@ -28,7 +28,7 @@
         <p *ngIf="show.nextEpisode">Next Episode: <strong>{{show.nextEpisode.airDate | date:'MMMM d, y, HH:mm'}}</strong></p>
       </div>
       <mat-action-row>
-        <a [href]="show.officialSite" mat-raised-button color="primary" target="_blank">Visit site</a>
+        <a [href]="show.officialSite" mat-raised-button color="primary" target="_blank" style="color: white">Visit site</a>
         <button mat-raised-button color="accent" [routerLink]="'/show/' + show.id">Details</button>
       </mat-action-row>
     </ng-template>

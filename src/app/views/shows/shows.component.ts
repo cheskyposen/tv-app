@@ -52,13 +52,15 @@ export class ShowsComponent implements OnInit, OnDestroy {
   private dynamicStyles(status): any {
     switch (status) {
       case('Running'):
-        return {color : 'green'};
+        return {color : '#3CB371'};
       case('Ended'):
-        return {color : 'tomato'};
+        return {color : '#DC143C'};
       case('In Development'):
-        return {color : 'blue'};
+        return {color : '#4169E1'};
       case('To Be Determined'):
-        return {color: 'orange'};
+        return {color: '#FF8C00'};
+      default:
+        return {color: '#8B008B'};
     }
   }
 }
