@@ -1,4 +1,14 @@
 main{
-  margin: 1.5rem auto;
-  max-width: 80%;
+  margin: 1rem auto;
+  max-width: 100%;
+}
+@media only screen and (min-width: 770px) {
+  main {
+    max-width: 90%;
+  }
+}
+@media only screen and (min-width: 1290px) {
+  main {
+    max-width: 80%;
+  }
 }

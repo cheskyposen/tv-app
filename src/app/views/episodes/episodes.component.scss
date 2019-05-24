@@ -1,9 +1,5 @@
-td{
-  margin: 0 auto;
-}
 .summary{
-  padding: 0 1rem;
-  width: 60%;
+  padding: 0 .5rem;
 }
 .container {
   position: relative;
@@ -18,10 +14,4 @@ td{
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
-}
-table{
-  width: 100%;
-}
-h3{
-  text-align: left;
 }

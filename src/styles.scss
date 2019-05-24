@@ -28,5 +28,5 @@ $tv-app-theme: mat-light-theme($tv-app-primary, $tv-app-accent, $tv-app-warn);
 
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
+html, body { max-height: 100vh; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

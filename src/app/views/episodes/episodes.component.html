@@ -1,27 +1,27 @@
-<table *ngIf="season" mat-table [dataSource]="season.episodes" multiTemplateDataRows class="mat-elevation-z8">
+<mat-table *ngIf="season" mat-table [dataSource]="season.episodes" multiTemplateDataRows>
 
   <ng-container matColumnDef="title">
-    <th mat-header-cell *matHeaderCellDef>EPISODE</th>
-    <td mat-cell *matCellDef="let episode" class="container">
+    <mat-header-cell *matHeaderCellDef>EPISODE</mat-header-cell>
+    <mat-cell *matCellDef="let episode" class="container">
       <img *ngIf="episode.image" [src]="episode.image" [alt]="episode.name">
       <h3 [innerText]="episode.name" [ngClass]="episode.image === null? 'blackCenter': 'whiteCenter'"></h3>
-    </td>
+    </mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="summary">
-    <th mat-header-cell *matHeaderCellDef>SUMMARY</th>
-    <td mat-cell *matCellDef="let episode" class="summary">
+    <mat-header-cell *matHeaderCellDef>SUMMARY</mat-header-cell>
+    <mat-cell *matCellDef="let episode" class="summary">
       <span [ngStyle]="showSpoilers(episode.airDate)? {'display':'none'}:''" [innerHTML]="episode.summary"></span>
-    </td>
+    </mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="aired">
-    <th mat-header-cell *matHeaderCellDef>AIRED</th>
-    <td mat-cell *matCellDef="let episode">
+    <mat-header-cell *matHeaderCellDef>AIRED</mat-header-cell>
+    <mat-cell *matCellDef="let episode">
       <h4 *ngIf="episode.airDate.isValid()">{{episode.airDate | date}}</h4>
-    </td>
+    </mat-cell>
   </ng-container>
 
-  <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
-  <tr mat-row *matRowDef="let episode; columns: columnsToDisplay;"></tr>
-</table>
+  <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
+  <mat-row *matRowDef="let episode; columns: columnsToDisplay;"></mat-row>
+</mat-table>
