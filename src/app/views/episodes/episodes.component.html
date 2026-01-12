@@ -22,7 +22,7 @@
   <ng-container matColumnDef="aired">
     <mat-header-cell *matHeaderCellDef>AIRED</mat-header-cell>
     <mat-cell *matCellDef="let episode" class="aired-cell">
-      <h4 *ngIf="episode.airDate.isValid()">{{episode.airDate | date:'MMM d, y'}}</h4>
+      <h4 *ngIf="episode.airDate.isValid()">{{episode.airDate | date}}</h4>
     </mat-cell>
   </ng-container>
 
