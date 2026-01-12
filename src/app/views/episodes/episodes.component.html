@@ -3,22 +3,26 @@
   <ng-container matColumnDef="title">
     <mat-header-cell *matHeaderCellDef>EPISODE</mat-header-cell>
     <mat-cell *matCellDef="let episode" class="container">
-      <img *ngIf="episode.image" [src]="episode.image" [alt]="episode.name">
-      <h3 [innerText]="episode.name" [ngClass]="episode.image === null? 'blackCenter': 'whiteCenter'"></h3>
+      <div class="episode-title-wrapper">
+        <img *ngIf="episode.image" [src]="episode.image" [alt]="episode.name">
+        <h3 [innerText]="episode.name" [ngClass]="episode.image === null? 'blackCenter': 'whiteCenter'"></h3>
+      </div>
     </mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="summary">
     <mat-header-cell *matHeaderCellDef>SUMMARY</mat-header-cell>
     <mat-cell *matCellDef="let episode" class="summary">
-      <span [ngStyle]="showSpoilers(episode.airDate)? {'display':'none'}:''" [innerHTML]="episode.summary"></span>
+      <div class="summary-content" [ngStyle]="showSpoilers(episode.airDate)? {'display':'none'}:''">
+        <span [innerHTML]="episode.summary"></span>
+      </div>
     </mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="aired">
     <mat-header-cell *matHeaderCellDef>AIRED</mat-header-cell>
-    <mat-cell *matCellDef="let episode">
-      <h4 *ngIf="episode.airDate.isValid()">{{episode.airDate | date}}</h4>
+    <mat-cell *matCellDef="let episode" class="aired-cell">
+      <h4 *ngIf="episode.airDate.isValid()">{{episode.airDate | date:'MMM d, y'}}</h4>
     </mat-cell>
   </ng-container>
 

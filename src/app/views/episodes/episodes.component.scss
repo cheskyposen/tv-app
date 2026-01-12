@@ -14,12 +14,14 @@ mat-header-row {
     font-weight: 600;
     font-size: 1rem;
     padding: 1rem;
+    text-align: left;
   }
 }
 
 mat-row {
   transition: background-color 0.2s ease;
   border-bottom: 1px solid #ecf0f1;
+  min-height: 120px;
   
   &:hover {
     background-color: #f8f9fa;
@@ -27,23 +29,34 @@ mat-row {
   
   mat-cell {
     padding: 1.5rem 1rem;
+    vertical-align: middle;
   }
 }
 
 .summary {
   padding: 0 1rem;
-  line-height: 1.6;
-  color: #34495e;
-  font-size: 0.95rem;
+  
+  .summary-content {
+    line-height: 1.7;
+    color: #34495e;
+    font-size: 0.95rem;
+    
+    span {
+      display: block;
+    }
+  }
 }
 
 .container {
-  position: relative;
-  text-align: center;
-  min-height: 120px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  .episode-title-wrapper {
+    position: relative;
+    text-align: center;
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
   
   img {
     width: 100%;
@@ -51,6 +64,7 @@ mat-row {
     height: auto;
     border-radius: 6px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: block;
   }
   
   h3 {
@@ -63,6 +77,7 @@ mat-row {
 .blackCenter {
   color: #2c3e50;
   padding: 1rem;
+  text-align: center;
 }
 
 .whiteCenter {
@@ -73,9 +88,20 @@ mat-row {
   color: white;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
   padding: 0.5rem 1rem;
-  background: rgba(0, 0, 0, 0.3);
-  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 6px;
   backdrop-filter: blur(4px);
+  max-width: 90%;
+  text-align: center;
+}
+
+.aired-cell {
+  h4 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #2c3e50;
+  }
 }
 
 /* Responsive design */
@@ -86,7 +112,9 @@ mat-row {
   }
   
   .container {
-    min-height: 80px;
+    .episode-title-wrapper {
+      min-height: 80px;
+    }
     
     img {
       max-width: 120px;
@@ -99,6 +127,13 @@ mat-row {
   
   .summary {
     padding: 0 0.5rem;
-    font-size: 0.85rem;
+    
+    .summary-content {
+      font-size: 0.85rem;
+    }
+  }
+  
+  .aired-cell h4 {
+    font-size: 0.9rem;
   }
 }
