@@ -9,6 +9,7 @@
 @include mat.core();
 
 // Define the theme
+// Note: Angular Material 19 uses Material 3 theming with 'tertiary' instead of 'accent'
 $tv-app-theme: mat.define-theme((
   color: (
     theme-type: light,
