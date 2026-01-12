@@ -1,5 +1,5 @@
 import {Episode} from './Episode';
-import * as moment from 'moment';
+import moment from 'moment';
 
 export class Season {
   id: number;

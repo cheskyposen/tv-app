@@ -1,10 +1,11 @@
 import {Component, Inject} from '@angular/core';
-import {MAT_BOTTOM_SHEET_DATA, MatBottomSheetRef} from '@angular/material';
+import {MAT_BOTTOM_SHEET_DATA, MatBottomSheetRef} from '@angular/material/bottom-sheet';
 import {Episode} from '../../models/Episode';
 
 @Component({
   selector: 'app-next-episode',
-  templateUrl: './next-episode.component.html'
+  templateUrl: './next-episode.component.html',
+  standalone: false
 })
 export class NextEpisodeComponent {
 

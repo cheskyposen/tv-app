@@ -8,7 +8,8 @@ import {Episode} from '../../models/Episode';
 @Component({
   selector: 'app-movies',
   templateUrl: './shows.component.html',
-  styleUrls: ['./shows.component.scss']
+  styleUrls: ['./shows.component.scss'],
+  standalone: false
 })
 export class ShowsComponent implements OnInit, OnDestroy {
   // creates an event to unsubscribe when emitted

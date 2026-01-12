@@ -6,7 +6,8 @@ import {takeUntil} from 'rxjs/operators';
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
-  styleUrls: ['./nav.component.scss']
+  styleUrls: ['./nav.component.scss'],
+  standalone: false
 })
 export class NavComponent implements OnInit, OnDestroy {
   // creates an event to unsubscribe when emitted
