@@ -2,17 +2,18 @@ import {Component, EventEmitter, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {TvMazeService} from '../../models/services/tv-maze.service';
 import {Show} from '../../models/Show';
-import * as moment from 'moment';
+import moment from 'moment';
 import {interval} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
-import {MatBottomSheet} from '@angular/material';
+import {MatBottomSheet} from '@angular/material/bottom-sheet';
 import {NextEpisodeComponent} from '../next-episode/next-episode.component';
 import {Episode} from '../../models/Episode';
 
 @Component({
   selector: 'app-seasons',
   templateUrl: './seasons.component.html',
-  styleUrls: ['./seasons.component.scss']
+  styleUrls: ['./seasons.component.scss'],
+  standalone: false
 })
 export class SeasonsComponent implements OnInit, OnDestroy {
   // creates an event to unsubscribe when emitted

@@ -3,7 +3,8 @@ import {Subject, SubscriptionLike, timer} from 'rxjs';
 import {switchMap, take, tap} from 'rxjs/operators';
 
 @Directive({
-  selector: '[appCountdown]'
+  selector: '[appCountdown]',
+  standalone: false
 })
 export class CountdownDirective implements OnChanges, OnDestroy {
 

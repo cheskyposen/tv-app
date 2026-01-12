@@ -1,5 +1,5 @@
 import {Season} from './Season';
-import * as moment from 'moment';
+import moment from 'moment';
 import {Episode} from './Episode';
 
 export class Show {

@@ -1,13 +1,14 @@
 import {Component, OnInit, Input, EventEmitter, OnDestroy} from '@angular/core';
 import {TvMazeService} from '../../models/services/tv-maze.service';
 import {Season} from '../../models/Season';
-import * as moment from 'moment';
+import moment from 'moment';
 import {takeUntil} from 'rxjs/operators';
 
 @Component({
   selector: 'app-episodes',
   templateUrl: './episodes.component.html',
   styleUrls: ['./episodes.component.scss'],
+  standalone: false
 })
 export class EpisodesComponent implements OnInit, OnDestroy {
   // creates an event to unsubscribe when emitted
