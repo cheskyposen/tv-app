@@ -8,13 +8,13 @@
 // Be sure that you only ever include this mixin once!
 @include mat.core();
 
-// Define the theme
+// Define the theme with modern colors
 // Note: Angular Material 19 uses Material 3 theming with 'tertiary' instead of 'accent'
 $tv-app-theme: mat.define-theme((
   color: (
     theme-type: light,
-    primary: mat.$green-palette,
-    tertiary: mat.$yellow-palette,
+    primary: mat.$azure-palette,
+    tertiary: mat.$violet-palette,
   ),
   typography: (
     brand-family: 'Roboto, "Helvetica Neue", sans-serif',
@@ -31,5 +31,70 @@ html {
 
 /* You can add global styles to this file, and also import other style files */
 
-html, body { max-height: 100vh; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body { 
+  max-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+body { 
+  margin: 0; 
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+/* Modern card styling */
+mat-card {
+  border-radius: 12px !important;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06) !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+mat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Improved expansion panel styling */
+mat-expansion-panel {
+  border-radius: 8px !important;
+  margin-bottom: 16px !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Better button styling */
+button[mat-raised-button], a[mat-raised-button] {
+  border-radius: 8px !important;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Improved form field styling */
+mat-form-field {
+  .mat-mdc-text-field-wrapper {
+    border-radius: 8px !important;
+  }
+}
+
+/* Better typography */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+h4 {
+  font-size: 1.25rem;
+}
+
+h5 {
+  font-size: 1.1rem;
+}
