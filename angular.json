@@ -36,7 +36,10 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/tv-app",
+            "outputPath": {
+              "base": "dist/tv-app",
+              "browser": ""
+            },
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -54,6 +57,10 @@
           },
           "configurations": {
             "production": {
+              "outputPath": {
+                "base": "docs",
+                "browser": ""
+              },
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
