@@ -1,16 +1,95 @@
 .countdown {
-  background-color: crimson;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   text-align: center;
   color: white;
-  border-radius: 5px;
-  margin: 0 auto;
+  border-radius: 12px;
+  margin: 1rem auto;
   max-width: 90%;
+  padding: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  
+  h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 500;
+  }
+  
+  &:hover {
+    transform: scale(1.02);
+  }
 }
+
+mat-card {
+  max-width: 1200px;
+  margin: 2rem auto !important;
+  padding: 1.5rem;
+  
+  mat-card-header {
+    margin-bottom: 1.5rem;
+    
+    .mat-mdc-card-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 8px;
+    }
+    
+    mat-card-title {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: #2c3e50;
+      margin-bottom: 0.5rem;
+    }
+    
+    mat-card-subtitle {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #7f8c8d;
+    }
+    
+    mat-slide-toggle {
+      margin-top: 1rem;
+    }
+  }
+}
+
+mat-accordion {
+  mat-expansion-panel {
+    margin-bottom: 1rem;
+    
+    mat-expansion-panel-header {
+      padding: 1rem 1.5rem;
+      
+      mat-panel-title {
+        font-size: 1.2rem;
+        font-weight: 600;
+      }
+      
+      mat-panel-description {
+        font-size: 0.95rem;
+        margin-left: 1rem;
+      }
+    }
+  }
+}
+
 @media only screen and (max-width: 760px) {
   .summary {
-      display: none;
+    display: none;
   }
+  
   mat-expansion-panel-header {
-    padding: 0 4px;
+    padding: 0.5rem !important;
+    
+    mat-panel-description {
+      font-size: 0.85rem;
+      margin-left: 0.5rem;
+    }
+  }
+  
+  mat-card {
+    margin: 1rem 0.5rem !important;
+    padding: 1rem;
   }
 }
