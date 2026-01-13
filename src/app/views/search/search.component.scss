@@ -7,37 +7,110 @@ h2{
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 
-.div{
-  margin: 2rem auto 0;
-  height: 70vh;
-  max-height: 70vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.search-container {
   width: 100%;
-  padding: 0 1rem;
+  padding: 2rem 1rem;
+}
 
+.search-bar-standalone {
+  margin: 0 auto 3rem;
+  max-width: 600px;
+  
   form {
-    margin: auto;
-    max-width: 600px;
-    width: 100%;
     background: white;
     padding: 2.5rem;
     border-radius: 16px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 
-     mat-form-field {
-        width: 100%;
-        font-size: 1.1rem;
+    mat-form-field {
+      width: 100%;
+      font-size: 1.1rem;
+      
+      button {
+        align-self: center;
+        transition: transform 0.2s ease;
         
-       button {
-         align-self: center;
-         transition: transform 0.2s ease;
-         
-         &:hover {
-           transform: scale(1.05);
-         }
-       }
+        &:hover {
+          transform: scale(1.05);
+        }
+      }
     }
+  }
+}
+
+.shows-section {
+  margin: 3rem auto;
+  max-width: 1400px;
+  
+  h3 {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 2rem;
+  }
+}
+
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  padding: 0 1rem;
+}
+
+.show-card {
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  }
+  
+  mat-card-header {
+    padding: 1rem;
+  }
+  
+  mat-card-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+  
+  mat-card-content {
+    padding: 1rem;
+    flex-grow: 1;
+    
+    p {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin: 0.5rem 0;
+    }
+    
+    .genres {
+      margin-top: 1rem;
+      
+      small {
+        display: inline-block;
+        padding: 0.25rem 0.5rem;
+        margin: 0.25rem;
+        background: #f0f0f0;
+        border-radius: 4px;
+        font-size: 0.85rem;
+      }
+    }
+  }
+  
+  mat-card-actions {
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+  }
+  
+  img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
   }
 }

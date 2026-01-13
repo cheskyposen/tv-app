@@ -39,4 +39,10 @@ export class TvMazeService {
       map(result => (result as any[]).map(item => new Episode(item)))
     );
   }
+  // function to get all shows from a page (TVMaze API supports pagination)
+  getAllShows(page: number = 0): Observable<Show[]> {
+    return this.http.get(this.baseUrl + 'shows?page=' + page).pipe(
+      map(result => (result as any[]).map(item => new Show(item)))
+    );
+  }
 }

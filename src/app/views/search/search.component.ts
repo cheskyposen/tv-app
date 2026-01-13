@@ -15,6 +15,8 @@ export class SearchComponent implements OnInit, OnDestroy {
   onDestroyEvent: EventEmitter<string> = new EventEmitter();
   shows$: Observable<Show[]>;
   private searchTerms = new Subject<string>();
+  recentShows: Show[] = [];
+  popularShows: Show[] = [];
 
   constructor(private tvMazeService: TvMazeService) {}
   ngOnInit() {
@@ -28,6 +30,8 @@ export class SearchComponent implements OnInit, OnDestroy {
       // unsubscribe on emit of this event
       takeUntil(this.onDestroyEvent)
     );
+    // Load recent and popular shows on init
+    this.loadRecentAndPopularShows();
   }
   ngOnDestroy() {
     // emits event
@@ -36,5 +40,25 @@ export class SearchComponent implements OnInit, OnDestroy {
   // Push a search term into the observable stream.
   search(term: string): void {
     this.searchTerms.next(term);
+  }
+  // Load recent and popular shows from active seasons
+  private loadRecentAndPopularShows(): void {
+    this.tvMazeService.getAllShows(0).pipe(takeUntil(this.onDestroyEvent))
+      .subscribe((shows) => {
+        // Filter for running shows only
+        const runningShows = shows.filter(show => show.status === 'Running');
+        
+        // Get 5 most recent shows (by premiere date)
+        this.recentShows = runningShows
+          .filter(show => show.premiered && show.premiered.isValid())
+          .sort((a, b) => b.premiered.valueOf() - a.premiered.valueOf())
+          .slice(0, 5);
+        
+        // Get 5 most popular shows (by rating)
+        this.popularShows = runningShows
+          .filter(show => show.rating)
+          .sort((a, b) => b.rating - a.rating)
+          .slice(0, 5);
+      });
   }
 }
