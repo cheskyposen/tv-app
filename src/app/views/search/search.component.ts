@@ -44,21 +44,26 @@ export class SearchComponent implements OnInit, OnDestroy {
   // Load recent and popular shows from active seasons
   private loadRecentAndPopularShows(): void {
     this.tvMazeService.getAllShows(0).pipe(takeUntil(this.onDestroyEvent))
-      .subscribe((shows) => {
-        // Filter for running shows only
-        const runningShows = shows.filter(show => show.status === 'Running');
-        
-        // Get 5 most recent shows (by premiere date)
-        this.recentShows = runningShows
-          .filter(show => show.premiered && show.premiered.isValid())
-          .sort((a, b) => b.premiered.valueOf() - a.premiered.valueOf())
-          .slice(0, 5);
-        
-        // Get 5 most popular shows (by rating)
-        this.popularShows = runningShows
-          .filter(show => show.rating)
-          .sort((a, b) => b.rating - a.rating)
-          .slice(0, 5);
+      .subscribe({
+        next: (shows) => {
+          // Filter for running shows only
+          const runningShows = shows.filter(show => show.status === 'Running');
+          
+          // Get 5 most recent shows (by premiere date)
+          this.recentShows = runningShows
+            .filter(show => show.premiered && show.premiered.isValid())
+            .sort((a, b) => b.premiered.valueOf() - a.premiered.valueOf())
+            .slice(0, 5);
+          
+          // Get 5 most popular shows (by rating)
+          this.popularShows = runningShows
+            .filter(show => show.rating)
+            .sort((a, b) => b.rating - a.rating)
+            .slice(0, 5);
+        },
+        error: (error) => {
+          console.error('Error loading shows:', error);
+        }
       });
   }
 }
