@@ -8,9 +8,9 @@
 // Be sure that you only ever include this mixin once!
 @include mat.core();
 
-// Define the theme with modern colors
+// Define the light theme with modern colors
 // Note: Angular Material 19 uses Material 3 theming with 'tertiary' instead of 'accent'
-$tv-app-theme: mat.define-theme((
+$tv-app-light-theme: mat.define-theme((
   color: (
     theme-type: light,
     primary: mat.$azure-palette,
@@ -24,9 +24,29 @@ $tv-app-theme: mat.define-theme((
   )
 ));
 
+// Define the dark theme
+$tv-app-dark-theme: mat.define-theme((
+  color: (
+    theme-type: dark,
+    primary: mat.$azure-palette,
+    tertiary: mat.$violet-palette,
+  ),
+  typography: (
+    brand-family: 'Roboto, "Helvetica Neue", sans-serif',
+  ),
+  density: (
+    scale: 0,
+  )
+));
+
 // Include theme styles for core and each component used in your app.
 html {
-  @include mat.all-component-themes($tv-app-theme);
+  @include mat.all-component-themes($tv-app-light-theme);
+}
+
+// Apply dark theme when dark-theme class is present
+html.dark-theme {
+  @include mat.all-component-colors($tv-app-dark-theme);
 }
 
 /* You can add global styles to this file, and also import other style files */
@@ -34,6 +54,11 @@ html {
 html, body { 
   max-height: 100vh;
   background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  transition: background 0.3s ease;
+}
+
+html.dark-theme, html.dark-theme body {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
 }
 
 body { 
