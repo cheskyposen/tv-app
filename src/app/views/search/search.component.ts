@@ -57,7 +57,7 @@ export class SearchComponent implements OnInit, OnDestroy {
           
           // Get 5 most popular shows (by rating)
           this.popularShows = runningShows
-            .filter(show => show.rating !== null && show.rating !== undefined)
+            .filter(show => show.rating !== null && show.rating !== undefined && show.rating > 0)
             .sort((a, b) => b.rating - a.rating)
             .slice(0, 5);
         },
