@@ -27,7 +27,7 @@
         <img mat-card-image *ngIf="show.image" [src]="show.image" [alt]="show.name">
         <mat-card-header>
           <mat-card-title>{{show.name}}</mat-card-title>
-          <mat-card-subtitle *ngIf="show.premiered.isValid()">Premiered: {{show.premiered | date}}</mat-card-subtitle>
+          <mat-card-subtitle *ngIf="show.premiered && show.premiered.isValid && show.premiered.isValid()">Premiered: {{show.premiered | date}}</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
           <p *ngIf="show.rating"><mat-icon>star_rate</mat-icon>{{show.rating}}</p>
@@ -50,7 +50,7 @@
         <img mat-card-image *ngIf="show.image" [src]="show.image" [alt]="show.name">
         <mat-card-header>
           <mat-card-title>{{show.name}}</mat-card-title>
-          <mat-card-subtitle *ngIf="show.premiered.isValid()">Premiered: {{show.premiered | date}}</mat-card-subtitle>
+          <mat-card-subtitle *ngIf="show.premiered && show.premiered.isValid && show.premiered.isValid()">Premiered: {{show.premiered | date}}</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
           <p *ngIf="show.rating"><mat-icon>star_rate</mat-icon>{{show.rating}}</p>

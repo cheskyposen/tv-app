@@ -51,13 +51,13 @@ export class SearchComponent implements OnInit, OnDestroy {
           
           // Get 5 most recent shows (by premiere date)
           this.recentShows = runningShows
-            .filter(show => show.premiered && show.premiered.isValid())
+            .filter(show => show.premiered && show.premiered.isValid && show.premiered.isValid())
             .sort((a, b) => b.premiered.valueOf() - a.premiered.valueOf())
             .slice(0, 5);
           
           // Get 5 most popular shows (by rating)
           this.popularShows = runningShows
-            .filter(show => show.rating)
+            .filter(show => show.rating !== null && show.rating !== undefined)
             .sort((a, b) => b.rating - a.rating)
             .slice(0, 5);
         },
