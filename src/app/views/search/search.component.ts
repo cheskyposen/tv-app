@@ -43,6 +43,9 @@ export class SearchComponent implements OnInit, OnDestroy {
   }
   // Load recent and popular shows from active seasons
   private loadRecentAndPopularShows(): void {
+    // NOTE: We intentionally load shows only from page 0 for performance reasons.
+    // This means "recent" and "popular" are computed from the first page of results,
+    // not from the entire TVMaze catalog.
     this.tvMazeService.getAllShows(0).pipe(takeUntil(this.onDestroyEvent))
       .subscribe({
         next: (shows) => {
