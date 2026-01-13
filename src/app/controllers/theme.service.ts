@@ -1,23 +1,33 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ThemeService {
+export class ThemeService implements OnDestroy {
   private isDarkMode$ = new BehaviorSubject<boolean>(false);
+  private mediaQuery?: MediaQueryList;
+  private mediaQueryListener?: (e: MediaQueryListEvent) => void;
 
   constructor() {
     // Check if window and matchMedia are available (for SSR compatibility)
     if (typeof window !== 'undefined' && window.matchMedia) {
       // Initialize with system preference
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
-      this.isDarkMode$.next(prefersDark.matches);
+      this.mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+      this.isDarkMode$.next(this.mediaQuery.matches);
 
       // Listen for changes in system preference
-      prefersDark.addEventListener('change', (e) => {
+      this.mediaQueryListener = (e: MediaQueryListEvent) => {
         this.isDarkMode$.next(e.matches);
-      });
+      };
+      this.mediaQuery.addEventListener('change', this.mediaQueryListener);
+    }
+  }
+
+  ngOnDestroy(): void {
+    // Clean up event listener
+    if (this.mediaQuery && this.mediaQueryListener) {
+      this.mediaQuery.removeEventListener('change', this.mediaQueryListener);
     }
   }
 
